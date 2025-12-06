@@ -1,32 +1,18 @@
+import logoImage from "@assets/Logo_SocialWave_(sfondo_bianco)_1765061020809.png";
+
 interface LogoProps {
   className?: string;
   variant?: 'light' | 'dark';
 }
 
 export function Logo({ className = "h-10", variant = 'dark' }: LogoProps) {
-  const lightColor = variant === 'dark' ? '#bae6fd' : '#ffffff';
-  const darkColor = variant === 'dark' ? '#2563eb' : '#60a5fa';
-
   return (
     <div className={`flex items-center gap-2 ${className}`} data-testid="logo">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-auto">
-        <path 
-          d="M22 55 C 15 35, 35 15, 65 20 C 85 24, 98 40, 102 48 C 85 38, 55 35, 38 48 C 30 54, 25 58, 22 55 Z" 
-          fill={lightColor}
-        />
-        <path 
-          d="M32 68 C 45 56, 75 52, 95 60" 
-          stroke={darkColor} 
-          strokeWidth="8" 
-          strokeLinecap="round"
-        />
-        <path 
-          d="M50 82 C 60 76, 78 74, 88 78" 
-          stroke={darkColor} 
-          strokeWidth="7" 
-          strokeLinecap="round"
-        />
-      </svg>
+      <img 
+        src={logoImage} 
+        alt="SocialWave Logo" 
+        className="h-full w-auto object-contain"
+      />
       <span className={`font-bold text-xl tracking-tight ${variant === 'dark' ? 'text-social-dark' : 'text-white'}`}>
         Social<span className="text-social-blue">Wave</span>
       </span>
