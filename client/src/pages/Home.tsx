@@ -1,7 +1,11 @@
 import { Link } from 'wouter';
 import { ArrowRight, BarChart3, PenTool, Share2, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import type { Service, ClientLogo } from '@shared/schema';
+import type { Service } from '@shared/schema';
+
+import logoAmaro from "@assets/Logo_Amaro_1765147444899.png";
+import logoAureliaCar from "@assets/Logo_Aurelia_Car_1765147454196.png";
+import logoBombolove from "@assets/Logo_bombolove_24_1765147466150.jpg";
 
 const services: Service[] = [
   {
@@ -30,13 +34,10 @@ const services: Service[] = [
   },
 ];
 
-const clientLogos: ClientLogo[] = [
-  { id: 1, name: 'Brand One' },
-  { id: 2, name: 'Fashion Co' },
-  { id: 3, name: 'Tech Start' },
-  { id: 4, name: 'Food Plus' },
-  { id: 5, name: 'Sport Pro' },
-  { id: 6, name: 'Beauty Lab' },
+const clientLogos = [
+  { id: 1, name: 'Amaro', logo: logoAmaro },
+  { id: 2, name: 'Aurelia Car', logo: logoAureliaCar },
+  { id: 3, name: 'Bombolove', logo: logoBombolove },
 ];
 
 const iconMap: Record<string, typeof Share2> = {
@@ -183,14 +184,16 @@ export default function Home() {
         </div>
         <div className="relative flex overflow-x-hidden group">
           <div className="animate-scroll whitespace-nowrap flex gap-16 px-8 items-center">
-            {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
+            {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
               <div 
                 key={`${logo.id}-${index}`} 
-                className="flex-shrink-0 grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                className="flex-shrink-0 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
               >
-                <div className="h-12 bg-white/10 rounded px-6 flex items-center justify-center text-white font-bold text-xl">
-                  {logo.name.toUpperCase()}
-                </div>
+                <img 
+                  src={logo.logo} 
+                  alt={logo.name} 
+                  className="h-16 w-auto object-contain"
+                />
               </div>
             ))}
           </div>
