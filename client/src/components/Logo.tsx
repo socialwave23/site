@@ -5,7 +5,7 @@ interface LogoProps {
   variant?: 'light' | 'dark';
 }
 
-export function Logo({ className = "h-14", variant = 'dark' }: LogoProps) {
+export function Logo({ className = "h-18", variant = 'dark' }: LogoProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`} data-testid="logo">
       <img 
