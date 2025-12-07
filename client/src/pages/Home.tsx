@@ -192,7 +192,8 @@ export default function Home() {
                 <img 
                   src={logo.logo} 
                   alt={logo.name} 
-                  className="h-16 w-auto object-contain"
+                  className="h-24 w-24 object-contain rounded-xl"
+                  style={{ background: 'transparent' }}
                 />
               </div>
             ))}
