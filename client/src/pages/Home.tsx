@@ -6,6 +6,9 @@ import type { Service } from '@shared/schema';
 import logoAmaro from "@assets/Logo_Amaro_1765147444899.png";
 import logoAureliaCar from "@assets/Logo_Aurelia_Car_1765147454196.png";
 import logoBombolove from "@assets/Logo_bombolove_24_1765147466150.jpg";
+import logoChezNous from "@assets/Logo_Chez_Nous_1765147628056.png";
+import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
+import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
 
 const services: Service[] = [
   {
@@ -38,6 +41,9 @@ const clientLogos = [
   { id: 1, name: 'Amaro', logo: logoAmaro },
   { id: 2, name: 'Aurelia Car', logo: logoAureliaCar },
   { id: 3, name: 'Bombolove', logo: logoBombolove },
+  { id: 4, name: 'Chez Nous', logo: logoChezNous },
+  { id: 5, name: 'Eleven Cafe', logo: logoEleven },
+  { id: 6, name: 'La Panacea', logo: logoPanacea },
 ];
 
 const iconMap: Record<string, typeof Share2> = {
@@ -184,7 +190,7 @@ export default function Home() {
         </div>
         <div className="relative flex overflow-x-hidden group">
           <div className="animate-scroll whitespace-nowrap flex gap-16 px-8 items-center">
-            {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
+            {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div 
                 key={`${logo.id}-${index}`} 
                 className="flex-shrink-0 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
@@ -192,7 +198,7 @@ export default function Home() {
                 <img 
                   src={logo.logo} 
                   alt={logo.name} 
-                  className="h-24 w-24 object-contain rounded-xl"
+                  className="h-32 w-32 object-contain rounded-xl"
                   style={{ background: 'transparent' }}
                 />
               </div>
