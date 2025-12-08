@@ -13,6 +13,7 @@ import logoCantina from "@assets/Logo_La_Cantina_1765228681883.png";
 import logoOffish from "@assets/Logo_Offish_1765228699600.png";
 import logoOstellino from "@assets/Logo_Ostellino_1765228708352.png";
 import logoWeLovePasta from "@assets/Logo_WeLovePasta_1765228725933.png";
+import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
 
 const services: Service[] = [
   {
@@ -85,7 +86,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-blue-50 pt-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-blue-50 pt-20 pb-24">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full fill-social-blue">
             <path transform="translate(100 100)" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.6C87.4,-34.2,90.2,-19.4,89.1,-4.9C88,9.6,83.1,23.8,74.9,36.5C66.7,49.2,55.2,60.4,42.4,68.6C29.6,76.8,15.5,82.1,0.8,80.7C-13.9,79.4,-29.1,71.4,-43.3,61.9C-57.5,52.4,-70.7,41.4,-79.8,27.6C-88.9,13.8,-93.9,-2.8,-88.9,-17.1C-83.9,-31.4,-68.9,-43.4,-54.2,-50.3C-39.5,-57.2,-25.1,-59,-11.7,-57.8C1.7,-56.6,15.1,-52.4,30.5,-83.6" />
@@ -129,62 +130,22 @@ export default function Home() {
           </div>
           
           <div className="relative hidden md:block">
-            <div className="relative w-full aspect-square max-w-lg mx-auto animate-float">
-              <div className="relative w-full h-full bg-white rounded-[3rem] shadow-2xl border-8 border-gray-900 overflow-hidden transform rotate-3 transition-transform duration-500 flex flex-col hover:rotate-0">
-                <div className="bg-gray-50 p-6 border-b border-gray-100 flex justify-between items-center gap-2">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">Social Trends</div>
+            <div className="relative w-full max-w-lg mx-auto">
+              <div className="relative rounded-3xl shadow-2xl overflow-hidden transform rotate-2 transition-transform duration-500 hover:rotate-0">
+                <img 
+                  src={heroPhoto} 
+                  alt="SocialWave team at work - food photography session" 
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-social-dark/30 to-transparent"></div>
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-social-blue flex items-center justify-center text-white">
+                  <Video size={24} />
                 </div>
-                
-                <div className="flex-1 bg-gradient-to-br from-slate-50 to-blue-50 relative p-8 flex flex-col justify-center items-center gap-8">
-                  <div className="absolute top-10 right-10 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-                  <div className="absolute bottom-10 left-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" style={{ animationDelay: '2s' }}></div>
-                  
-                  <div className="grid grid-cols-2 gap-6 w-full z-10">
-                    <div className="bg-white rounded-2xl p-6 shadow-xl flex flex-col items-center gap-4 transition-transform duration-300 hover:-translate-y-2">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 flex items-center justify-center text-white shadow-lg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                      </div>
-                      <div className="text-center">
-                        <p className="font-bold text-gray-800">Instagram</p>
-                        <p className="text-xs text-gray-500">+128% Followers</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-6 shadow-xl flex flex-col items-center gap-4 transition-transform duration-300 hover:-translate-y-2" style={{ transitionDelay: '100ms' }}>
-                      <div className="w-16 h-16 rounded-xl bg-black flex items-center justify-center text-white shadow-lg relative overflow-hidden">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 relative z-10">
-                          <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
-                        </svg>
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#25F4EE]/20 to-[#FE2C55]/20 mix-blend-screen"></div>
-                      </div>
-                      <div className="text-center">
-                        <p className="font-bold text-gray-800">TikTok</p>
-                        <p className="text-xs text-gray-500">Viral Strategy</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-full bg-white/60 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-social-blue/10 flex items-center justify-center text-social-blue">
-                      <BarChart3 size={20} />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-social-dark">Engagement Rate</p>
-                      <div className="w-32 h-2 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                        <div className="bg-social-blue h-full w-[85%] rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="ml-auto font-bold text-social-blue">8.5%</div>
-                  </div>
+                <div>
+                  <p className="font-bold text-social-dark text-sm">Content Creation</p>
+                  <p className="text-xs text-gray-500">Foto & Video professionali</p>
                 </div>
               </div>
             </div>
