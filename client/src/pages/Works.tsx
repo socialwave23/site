@@ -3,7 +3,7 @@ import { Play, TrendingUp, Eye, Heart, Share2, ArrowRight, Sparkles } from 'luci
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 interface VideoWork {
   id: string;
@@ -88,44 +88,25 @@ const itemVariants = {
 };
 
 function TikTokEmbed({ videoId, testId }: { videoId: string; testId: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const loadTikTokScript = () => {
-      const existingScript = document.querySelector('script[src="https://www.tiktok.com/embed.js"]');
-      if (!existingScript) {
-        const script = document.createElement('script');
-        script.src = 'https://www.tiktok.com/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-      } else {
-        if ((window as unknown as { tiktokEmbed?: { lib?: { render?: (ids: string[]) => void } } }).tiktokEmbed?.lib?.render) {
-          (window as unknown as { tiktokEmbed: { lib: { render: (ids: string[]) => void } } }).tiktokEmbed.lib.render([`tiktok-${videoId}`]);
-        }
-      }
-    };
-
-    loadTikTokScript();
-  }, [videoId]);
-
   return (
-    <div ref={containerRef} className="w-full flex justify-center" data-testid={testId}>
-      <blockquote
-        className="tiktok-embed"
-        cite={`https://www.tiktok.com/video/${videoId}`}
-        data-video-id={videoId}
-        id={`tiktok-${videoId}`}
-        style={{ maxWidth: '325px', minWidth: '280px' }}
-      >
-        <section />
-      </blockquote>
+    <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
+      <iframe
+        src={`https://www.tiktok.com/embed/v2/${videoId}`}
+        style={{ 
+          width: '100%',
+          height: '100%',
+          minHeight: '500px',
+          border: 'none',
+        }}
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
     </div>
   );
 }
 
 function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const loadInstagramScript = () => {
       const existingScript = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
@@ -146,85 +127,19 @@ function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }
   }, [videoId]);
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center" data-testid={testId}>
-      <blockquote
-        className="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink={`https://www.instagram.com/reel/${videoId}/`}
-        data-instgrm-version="14"
-        style={{
-          background: '#FFF',
-          border: 0,
-          borderRadius: '12px',
-          boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-          margin: '1px',
-          maxWidth: '340px',
-          minWidth: '280px',
-          padding: 0,
-          width: 'calc(100% - 2px)',
+    <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
+      <iframe
+        src={`https://www.instagram.com/reel/${videoId}/embed/`}
+        style={{ 
+          width: '100%',
+          height: '100%',
+          minHeight: '500px',
+          border: 'none',
         }}
-      >
-        <div style={{ padding: '16px' }}>
-          <a
-            href={`https://www.instagram.com/reel/${videoId}/`}
-            style={{
-              background: '#FFFFFF',
-              lineHeight: 0,
-              padding: '0 0',
-              textAlign: 'center',
-              textDecoration: 'none',
-              width: '100%',
-            }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-              <div style={{
-                backgroundColor: '#F4F4F4',
-                borderRadius: '50%',
-                height: '40px',
-                marginRight: '14px',
-                width: '40px',
-              }} />
-              <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
-                <div style={{
-                  backgroundColor: '#F4F4F4',
-                  borderRadius: '4px',
-                  height: '14px',
-                  marginBottom: '6px',
-                  width: '100px',
-                }} />
-                <div style={{
-                  backgroundColor: '#F4F4F4',
-                  borderRadius: '4px',
-                  height: '14px',
-                  width: '60px',
-                }} />
-              </div>
-            </div>
-            <div style={{ padding: '19% 0' }} />
-            <div style={{
-              display: 'block',
-              height: '50px',
-              margin: '0 auto 12px',
-              width: '50px',
-            }}>
-              <SiInstagram style={{ width: '100%', height: '100%', color: '#E4405F' }} />
-            </div>
-            <div style={{ paddingTop: '8px' }}>
-              <div style={{
-                color: '#3897f0',
-                fontFamily: 'Arial,sans-serif',
-                fontSize: '14px',
-                fontWeight: 550,
-                lineHeight: '18px',
-              }}>
-                Visualizza su Instagram
-              </div>
-            </div>
-          </a>
-        </div>
-      </blockquote>
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
     </div>
   );
 }
