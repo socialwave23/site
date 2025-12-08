@@ -10,7 +10,7 @@ interface VideoWork {
   title: string;
   client: string;
   platform: 'tiktok' | 'instagram';
-  embedUrl: string;
+  videoId: string;
   originalUrl: string;
   stats: {
     views: string;
@@ -26,7 +26,7 @@ const works: VideoWork[] = [
     title: 'Viral Food Content',
     client: 'I Porci Comodi',
     platform: 'tiktok',
-    embedUrl: 'https://www.tiktok.com/embed/v2/7510405219461879073',
+    videoId: '7510405219461879073',
     originalUrl: 'https://vm.tiktok.com/ZNRLf142W/',
     stats: {
       views: '150K+',
@@ -40,7 +40,7 @@ const works: VideoWork[] = [
     title: 'Reel Coinvolgente',
     client: 'La Panacea',
     platform: 'instagram',
-    embedUrl: 'https://www.instagram.com/reel/DE4zY-Ei2MW/embed',
+    videoId: 'DE4zY-Ei2MW',
     originalUrl: 'https://www.instagram.com/reel/DE4zY-Ei2MW/',
     stats: {
       views: '45K+',
@@ -54,7 +54,7 @@ const works: VideoWork[] = [
     title: 'Cocktail Experience',
     client: 'La Panacea',
     platform: 'instagram',
-    embedUrl: 'https://www.instagram.com/reel/DN7cquDDKm_/embed',
+    videoId: 'DN7cquDDKm_',
     originalUrl: 'https://www.instagram.com/reel/DN7cquDDKm_/',
     stats: {
       views: '28K+',
@@ -87,9 +87,149 @@ const itemVariants = {
   },
 };
 
+function TikTokEmbed({ videoId, testId }: { videoId: string; testId: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadTikTokScript = () => {
+      const existingScript = document.querySelector('script[src="https://www.tiktok.com/embed.js"]');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = 'https://www.tiktok.com/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
+      } else {
+        if ((window as unknown as { tiktokEmbed?: { lib?: { render?: (ids: string[]) => void } } }).tiktokEmbed?.lib?.render) {
+          (window as unknown as { tiktokEmbed: { lib: { render: (ids: string[]) => void } } }).tiktokEmbed.lib.render([`tiktok-${videoId}`]);
+        }
+      }
+    };
+
+    loadTikTokScript();
+  }, [videoId]);
+
+  return (
+    <div ref={containerRef} className="w-full flex justify-center" data-testid={testId}>
+      <blockquote
+        className="tiktok-embed"
+        cite={`https://www.tiktok.com/video/${videoId}`}
+        data-video-id={videoId}
+        id={`tiktok-${videoId}`}
+        style={{ maxWidth: '325px', minWidth: '280px' }}
+      >
+        <section />
+      </blockquote>
+    </div>
+  );
+}
+
+function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadInstagramScript = () => {
+      const existingScript = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
+      } else {
+        if ((window as unknown as { instgrm?: { Embeds?: { process?: () => void } } }).instgrm?.Embeds?.process) {
+          (window as unknown as { instgrm: { Embeds: { process: () => void } } }).instgrm.Embeds.process();
+        }
+      }
+    };
+
+    const timer = setTimeout(loadInstagramScript, 100);
+    return () => clearTimeout(timer);
+  }, [videoId]);
+
+  return (
+    <div ref={containerRef} className="w-full flex justify-center" data-testid={testId}>
+      <blockquote
+        className="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink={`https://www.instagram.com/reel/${videoId}/`}
+        data-instgrm-version="14"
+        style={{
+          background: '#FFF',
+          border: 0,
+          borderRadius: '12px',
+          boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+          margin: '1px',
+          maxWidth: '340px',
+          minWidth: '280px',
+          padding: 0,
+          width: 'calc(100% - 2px)',
+        }}
+      >
+        <div style={{ padding: '16px' }}>
+          <a
+            href={`https://www.instagram.com/reel/${videoId}/`}
+            style={{
+              background: '#FFFFFF',
+              lineHeight: 0,
+              padding: '0 0',
+              textAlign: 'center',
+              textDecoration: 'none',
+              width: '100%',
+            }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+              <div style={{
+                backgroundColor: '#F4F4F4',
+                borderRadius: '50%',
+                height: '40px',
+                marginRight: '14px',
+                width: '40px',
+              }} />
+              <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
+                <div style={{
+                  backgroundColor: '#F4F4F4',
+                  borderRadius: '4px',
+                  height: '14px',
+                  marginBottom: '6px',
+                  width: '100px',
+                }} />
+                <div style={{
+                  backgroundColor: '#F4F4F4',
+                  borderRadius: '4px',
+                  height: '14px',
+                  width: '60px',
+                }} />
+              </div>
+            </div>
+            <div style={{ padding: '19% 0' }} />
+            <div style={{
+              display: 'block',
+              height: '50px',
+              margin: '0 auto 12px',
+              width: '50px',
+            }}>
+              <SiInstagram style={{ width: '100%', height: '100%', color: '#E4405F' }} />
+            </div>
+            <div style={{ paddingTop: '8px' }}>
+              <div style={{
+                color: '#3897f0',
+                fontFamily: 'Arial,sans-serif',
+                fontSize: '14px',
+                fontWeight: 550,
+                lineHeight: '18px',
+              }}>
+                Visualizza su Instagram
+              </div>
+            </div>
+          </a>
+        </div>
+      </blockquote>
+    </div>
+  );
+}
+
 function VideoCard({ work }: { work: VideoWork }) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  
   const platformConfig = {
     tiktok: {
       icon: SiTiktok,
@@ -104,22 +244,9 @@ function VideoCard({ work }: { work: VideoWork }) {
       label: 'Instagram',
     },
   };
-  
+
   const config = platformConfig[work.platform];
   const PlatformIcon = config.icon;
-
-  useEffect(() => {
-    if (work.platform === 'instagram') {
-      const script = document.createElement('script');
-      script.src = '//www.instagram.com/embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-      
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
-  }, [work.platform]);
 
   return (
     <motion.div
@@ -127,50 +254,15 @@ function VideoCard({ work }: { work: VideoWork }) {
       className="group"
       data-testid={`video-card-${work.id}`}
     >
-      <div className={`relative rounded-3xl overflow-hidden bg-gradient-to-br ${config.accentGradient} p-[2px]`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent pointer-events-none" />
-        
-        <div className="relative bg-white dark:bg-gray-900 rounded-[22px] overflow-hidden">
-          <div className="relative aspect-[9/16] max-h-[600px] bg-black">
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-              {work.platform === 'tiktok' ? (
-                <iframe
-                  ref={iframeRef}
-                  src={work.embedUrl}
-                  className="w-full h-full"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  data-testid={`video-iframe-${work.id}`}
-                />
-              ) : (
-                <iframe
-                  ref={iframeRef}
-                  src={work.embedUrl}
-                  className="w-full h-full"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  data-testid={`video-iframe-${work.id}`}
-                />
-              )}
-            </div>
-            
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+      <div className={`relative rounded-3xl overflow-visible bg-gradient-to-br ${config.accentGradient} p-[2px]`}>
+        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent pointer-events-none rounded-3xl" />
+
+        <div className="relative bg-white dark:bg-gray-900 rounded-[22px] overflow-visible">
+          <div className="p-4 pt-6">
+            <div className="flex items-center justify-between mb-4">
               <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${config.gradient} text-white text-sm font-semibold shadow-lg`}>
                 <PlatformIcon className="w-4 h-4" />
                 {config.label}
-              </div>
-            </div>
-          </div>
-          
-          <div className="p-6">
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-social-dark dark:text-white mb-1">
-                  {work.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {work.client}
-                </p>
               </div>
               <motion.a
                 href={work.originalUrl}
@@ -184,11 +276,30 @@ function VideoCard({ work }: { work: VideoWork }) {
                 <Play className="w-4 h-4 ml-0.5" />
               </motion.a>
             </div>
-            
+
+            <div className="relative min-h-[500px] flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
+              {work.platform === 'tiktok' ? (
+                <TikTokEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
+              ) : (
+                <InstagramEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
+              )}
+            </div>
+          </div>
+
+          <div className="p-6 pt-4">
+            <div className="mb-4">
+              <h3 className="text-xl font-bold text-social-dark dark:text-white mb-1">
+                {work.title}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {work.client}
+              </p>
+            </div>
+
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
               {work.description}
             </p>
-            
+
             <div className="grid grid-cols-3 gap-3">
               <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
                 <Eye className="w-4 h-4 mb-1 text-blue-500" />
@@ -225,15 +336,15 @@ export default function Works() {
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-orange-400/20 rounded-full blur-3xl" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
+          <motion.div
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div 
+            <motion.div
               className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500/10 via-pink-500/10 to-orange-500/10 backdrop-blur-sm border border-pink-200/50 dark:border-pink-500/20 rounded-full text-sm font-bold uppercase tracking-wider mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -242,8 +353,8 @@ export default function Works() {
               <Play className="w-4 h-4 text-pink-500" />
               <span className="text-gray-700 dark:text-gray-300">I Nostri Lavori</span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-5xl md:text-7xl font-black mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -255,14 +366,14 @@ export default function Works() {
                 spaccano
               </span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Video virali, reel coinvolgenti e contenuti che fanno crescere i brand. 
+              Video virali, reel coinvolgenti e contenuti che fanno crescere i brand.
               Guarda i nostri migliori lavori in azione.
             </motion.p>
           </motion.div>
@@ -271,7 +382,7 @@ export default function Works() {
 
       <section className="py-12 md:py-20" data-testid="works-grid-section">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
             variants={containerVariants}
             initial="hidden"
@@ -287,7 +398,7 @@ export default function Works() {
 
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="relative rounded-3xl overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -296,9 +407,9 @@ export default function Works() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-pink-500 to-orange-500" />
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.08%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
-            
+
             <div className="relative px-8 py-16 md:py-20 text-center">
-              <motion.div 
+              <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -308,20 +419,20 @@ export default function Works() {
                 <TrendingUp className="w-4 h-4" />
                 Risultati garantiti
               </motion.div>
-              
+
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
                 Vuoi risultati{' '}
                 <span className="underline decoration-wavy decoration-white/50">così</span>?
               </h2>
-              
+
               <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Trasformiamo la tua presenza social in una macchina di engagement. 
+                Trasformiamo la tua presenza social in una macchina di engagement.
                 Contenuti che il tuo pubblico ama condividere.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/contact" onClick={handleScrollTop}>
-                  <Button 
+                  <Button
                     className="group bg-white text-pink-600 px-8 py-6 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20"
                     data-testid="works-cta-button"
                   >
@@ -331,7 +442,7 @@ export default function Works() {
                   </Button>
                 </Link>
                 <Link href="/clients" onClick={handleScrollTop}>
-                  <Button 
+                  <Button
                     variant="outline"
                     className="bg-white/10 border-white/30 text-white px-8 py-6 rounded-2xl font-bold text-lg backdrop-blur-sm"
                     data-testid="works-clients-button"
