@@ -8,6 +8,11 @@ import logoAureliaCar from "@assets/Logo_Aurelia_Car_1765147454196.png";
 import logoChezNous from "@assets/Logo_Chez_Nous_1765147628056.png";
 import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
 import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
+import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
+import logoCantina from "@assets/Logo_La_Cantina_1765228681883.png";
+import logoOffish from "@assets/Logo_Offish_1765228699600.png";
+import logoOstellino from "@assets/Logo_Ostellino_1765228708352.png";
+import logoWeLovePasta from "@assets/Logo_WeLovePasta_1765228725933.png";
 
 const services: Service[] = [
   {
@@ -42,6 +47,11 @@ const clientLogos = [
   { id: 3, name: 'Chez Nous', logo: logoChezNous },
   { id: 4, name: 'Eleven Cafe', logo: logoEleven },
   { id: 5, name: 'La Panacea', logo: logoPanacea },
+  { id: 6, name: 'I Porci Comodi', logo: logoPorciComodi },
+  { id: 7, name: 'La Cantina', logo: logoCantina },
+  { id: 8, name: 'Offish', logo: logoOffish },
+  { id: 9, name: "L'Ostellino", logo: logoOstellino },
+  { id: 10, name: 'We Love Pasta', logo: logoWeLovePasta },
 ];
 
 const iconMap: Record<string, typeof Share2> = {
