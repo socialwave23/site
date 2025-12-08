@@ -196,21 +196,40 @@ export default function Home() {
         <div className="container mx-auto px-4 mb-6">
           <p className="text-center text-gray-400 text-sm uppercase tracking-widest">Hanno scelto la nostra onda</p>
         </div>
-        <div className="relative flex overflow-x-hidden group">
-          <div className="animate-scroll whitespace-nowrap flex gap-8 px-8 items-center">
-            {[...clientLogos, ...clientLogos].map((logo, index) => (
-              <div 
-                key={`${logo.id}-${index}`} 
-                className="flex-shrink-0 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-              >
-                <img 
-                  src={logo.logo} 
-                  alt={logo.name} 
-                  className="h-40 w-40 object-contain rounded-xl"
-                  style={{ background: 'transparent' }}
-                />
-              </div>
-            ))}
+        <div className="flex flex-col gap-6">
+          <div className="relative flex overflow-x-hidden group">
+            <div className="animate-scroll whitespace-nowrap flex gap-8 px-8 items-center">
+              {[...clientLogos.slice(0, 5), ...clientLogos.slice(0, 5)].map((logo, index) => (
+                <div 
+                  key={`row1-${logo.id}-${index}`} 
+                  className="flex-shrink-0 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                >
+                  <img 
+                    src={logo.logo} 
+                    alt={logo.name} 
+                    className="h-32 w-32 object-contain rounded-xl"
+                    style={{ background: 'transparent' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative flex overflow-x-hidden group">
+            <div className="animate-scroll-reverse whitespace-nowrap flex gap-8 px-8 items-center">
+              {[...clientLogos.slice(5, 10), ...clientLogos.slice(5, 10)].map((logo, index) => (
+                <div 
+                  key={`row2-${logo.id}-${index}`} 
+                  className="flex-shrink-0 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                >
+                  <img 
+                    src={logo.logo} 
+                    alt={logo.name} 
+                    className="h-32 w-32 object-contain rounded-xl"
+                    style={{ background: 'transparent' }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
