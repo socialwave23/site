@@ -187,14 +187,14 @@ function ClientShowcase({ client, index }: { client: Client; index: number }) {
                           </div>
                         </div>
                         
-                        <div className="grid grid-cols-3 gap-2 mb-4">
-                          {[1, 2, 3, 4, 5, 6].map((i) => (
-                            <motion.div 
-                              key={i}
-                              className={`aspect-square rounded-xl bg-gradient-to-br ${client.gradient} opacity-20`}
-                              whileHover={{ opacity: 0.4 }}
-                            />
-                          ))}
+                        <div className="relative w-full h-48 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 mb-4">
+                          <iframe
+                            src={`https://www.instagram.com/${client.instagramHandle}/embed`}
+                            className="w-full h-full"
+                            style={{ border: 'none', transform: 'scale(1.02)', transformOrigin: 'center' }}
+                            scrolling="no"
+                            allowTransparency
+                          />
                         </div>
                         
                         <div className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600">
