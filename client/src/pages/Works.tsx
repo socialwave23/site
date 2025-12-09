@@ -3,7 +3,6 @@ import { Play, TrendingUp, Eye, Heart, Share2, ArrowRight, Sparkles } from 'luci
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
 
 interface VideoWork {
   id: string;
@@ -107,25 +106,6 @@ function TikTokEmbed({ videoId, testId }: { videoId: string; testId: string }) {
 }
 
 function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }) {
-  useEffect(() => {
-    const loadInstagramScript = () => {
-      const existingScript = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
-      if (!existingScript) {
-        const script = document.createElement('script');
-        script.src = 'https://www.instagram.com/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-      } else {
-        if ((window as unknown as { instgrm?: { Embeds?: { process?: () => void } } }).instgrm?.Embeds?.process) {
-          (window as unknown as { instgrm: { Embeds: { process: () => void } } }).instgrm.Embeds.process();
-        }
-      }
-    };
-
-    const timer = setTimeout(loadInstagramScript, 100);
-    return () => clearTimeout(timer);
-  }, [videoId]);
-
   return (
     <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
       <iframe

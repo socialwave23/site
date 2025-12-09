@@ -193,7 +193,7 @@ function ClientShowcase({ client, index }: { client: Client; index: number }) {
                             className="w-full h-full"
                             style={{ border: 'none', transform: 'scale(1.02)', transformOrigin: 'center' }}
                             scrolling="no"
-                            allowTransparency
+                            allowTransparency={true}
                           />
                         </div>
                         
