@@ -13,7 +13,7 @@ export function Logo({ className = "h-10", variant = 'dark' }: LogoProps) {
         alt="SocialWave Logo" 
         className="h-full w-auto object-contain"
       />
-      <span className={`font-bold text-xl tracking-tight ${variant === 'dark' ? 'text-[#050A30]' : 'text-white'}`}>
+      <span className="font-bold text-xl tracking-tight text-[#cae8ff]">
         Social<span className="text-[#233DFF]">Wave</span>
       </span>
     </div>
