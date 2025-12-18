@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Portfolio', path: '/portfolio' },
-  { name: 'Clienti', path: '/clients' },
+  { name: 'Servizi', path: '/portfolio' },
   { name: 'Lavori', path: '/works' },
+  { name: 'Clienti', path: '/clients' },
   { name: 'Contatti', path: '/contact' },
 ];
 
@@ -16,6 +16,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+
+  const isHeroPage = location === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +32,21 @@ export function Navbar() {
     window.scrollTo(0, 0);
   };
 
+  const navBg = scrolled || !isHeroPage 
+    ? 'bg-white shadow-sm' 
+    : 'bg-transparent';
+  
+  const textColor = scrolled || !isHeroPage 
+    ? 'text-gray-700' 
+    : 'text-white';
+  
+  const activeColor = scrolled || !isHeroPage 
+    ? 'text-[#233DFF]' 
+    : 'text-white font-bold';
+
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 py-4 ${navBg}`}
       data-testid="navbar"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,19 +65,20 @@ export function Navbar() {
               >
                 <span className={`text-sm font-semibold transition-colors duration-200 cursor-pointer ${
                   location === link.path 
-                    ? 'text-social-blue' 
-                    : 'text-gray-600 hover:text-social-dark'
+                    ? activeColor
+                    : `${textColor} hover:opacity-80`
                 }`}>
-                  {link.name.toUpperCase()}
+                  {link.name}
                 </span>
               </Link>
             ))}
             <Link href="/contact" onClick={handleNav}>
               <Button 
-                className="bg-social-blue text-white rounded-full font-semibold shadow-lg shadow-blue-500/30"
+                className="bg-[#233DFF] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 hover:bg-[#1a2fc7]"
                 data-testid="nav-cta-button"
               >
-                Iniziamo
+                <Phone size={16} />
+                Contattaci
               </Button>
             </Link>
           </div>
@@ -75,6 +88,7 @@ export function Navbar() {
               size="icon"
               variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
+              className={textColor}
               data-testid="mobile-menu-toggle"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -95,7 +109,7 @@ export function Navbar() {
               >
                 <span className={`block text-left text-lg font-medium px-4 py-2 rounded-md cursor-pointer ${
                   location === link.path 
-                    ? 'bg-blue-50 text-social-blue' 
+                    ? 'bg-[#CAE8FF] text-[#233DFF]' 
                     : 'text-gray-600'
                 }`}>
                   {link.name}
@@ -104,10 +118,11 @@ export function Navbar() {
             ))}
             <Link href="/contact" onClick={handleNav}>
               <Button 
-                className="mt-4 mx-4 w-[calc(100%-2rem)] bg-social-blue text-white py-3 rounded-md font-bold shadow-md"
+                className="mt-4 mx-4 w-[calc(100%-2rem)] bg-[#233DFF] text-white py-3 rounded-full font-bold shadow-md flex items-center justify-center gap-2"
                 data-testid="mobile-nav-cta"
               >
-                Iniziamo un progetto
+                <Phone size={16} />
+                Contattaci
               </Button>
             </Link>
           </div>

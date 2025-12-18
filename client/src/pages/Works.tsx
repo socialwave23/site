@@ -1,8 +1,7 @@
 import { Link } from 'wouter';
-import { Play, TrendingUp, Eye, Heart, Share2, ArrowRight, Sparkles } from 'lucide-react';
+import { Play, Eye, Heart, Share2, ArrowRight } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
 
 interface VideoWork {
   id: string;
@@ -64,28 +63,6 @@ const works: VideoWork[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
 function TikTokEmbed({ videoId, testId }: { videoId: string; testId: string }) {
   return (
     <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
@@ -128,14 +105,12 @@ function VideoCard({ work }: { work: VideoWork }) {
   const platformConfig = {
     tiktok: {
       icon: SiTiktok,
-      gradient: 'from-black via-gray-900 to-black',
-      accentGradient: 'from-cyan-400 via-pink-500 to-red-500',
+      bgColor: 'bg-black',
       label: 'TikTok',
     },
     instagram: {
       icon: SiInstagram,
-      gradient: 'from-purple-600 via-pink-500 to-orange-400',
-      accentGradient: 'from-purple-500 via-pink-500 to-orange-500',
+      bgColor: 'bg-gradient-to-r from-purple-600 via-pink-500 to-rose-400',
       label: 'Instagram',
     },
   };
@@ -144,78 +119,69 @@ function VideoCard({ work }: { work: VideoWork }) {
   const PlatformIcon = config.icon;
 
   return (
-    <motion.div
-      variants={itemVariants}
-      className="group"
+    <div
+      className="group bg-white rounded-3xl shadow-lg overflow-hidden"
       data-testid={`video-card-${work.id}`}
     >
-      <div className={`relative rounded-3xl overflow-visible bg-gradient-to-br ${config.accentGradient} p-[2px]`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent pointer-events-none rounded-3xl" />
-
-        <div className="relative bg-white dark:bg-gray-900 rounded-[22px] overflow-visible">
-          <div className="p-4 pt-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${config.gradient} text-white text-sm font-semibold shadow-lg`}>
-                <PlatformIcon className="w-4 h-4" />
-                {config.label}
-              </div>
-              <motion.a
-                href={work.originalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${config.accentGradient} text-white shadow-lg`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                data-testid={`video-link-${work.id}`}
-              >
-                <Play className="w-4 h-4 ml-0.5" />
-              </motion.a>
-            </div>
-
-            <div className="relative min-h-[500px] flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
-              {work.platform === 'tiktok' ? (
-                <TikTokEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
-              ) : (
-                <InstagramEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
-              )}
-            </div>
+      <div className="p-4 pt-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${config.bgColor} text-white text-sm font-semibold`}>
+            <PlatformIcon className="w-4 h-4" />
+            {config.label}
           </div>
+          <a
+            href={work.originalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-[#233DFF] text-white shadow-lg transition-transform hover:scale-110"
+            data-testid={`video-link-${work.id}`}
+          >
+            <Play className="w-4 h-4 ml-0.5" />
+          </a>
+        </div>
 
-          <div className="p-6 pt-4">
-            <div className="mb-4">
-              <h3 className="text-xl font-bold text-social-dark dark:text-white mb-1">
-                {work.title}
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                {work.client}
-              </p>
-            </div>
+        <div className="relative min-h-[500px] flex items-center justify-center bg-gray-50 rounded-2xl overflow-hidden">
+          {work.platform === 'tiktok' ? (
+            <TikTokEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
+          ) : (
+            <InstagramEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
+          )}
+        </div>
+      </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
-              {work.description}
-            </p>
+      <div className="p-6 pt-4">
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-gray-900 mb-1">
+            {work.title}
+          </h3>
+          <p className="text-sm text-gray-500">
+            {work.client}
+          </p>
+        </div>
 
-            <div className="grid grid-cols-3 gap-3">
-              <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
-                <Eye className="w-4 h-4 mb-1 text-blue-500" />
-                <span className="text-lg font-bold text-social-dark dark:text-white">{work.stats.views}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Views</span>
-              </div>
-              <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
-                <Heart className="w-4 h-4 mb-1 text-red-500" />
-                <span className="text-lg font-bold text-social-dark dark:text-white">{work.stats.likes}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Likes</span>
-              </div>
-              <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
-                <Share2 className="w-4 h-4 mb-1 text-green-500" />
-                <span className="text-lg font-bold text-social-dark dark:text-white">{work.stats.shares}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Shares</span>
-              </div>
-            </div>
+        <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+          {work.description}
+        </p>
+
+        <div className="grid grid-cols-3 gap-3">
+          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
+            <Eye className="w-4 h-4 mb-1 text-[#233DFF]" />
+            <span className="text-lg font-bold text-gray-900">{work.stats.views}</span>
+            <span className="text-xs text-gray-500">Views</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
+            <Heart className="w-4 h-4 mb-1 text-red-500" />
+            <span className="text-lg font-bold text-gray-900">{work.stats.likes}</span>
+            <span className="text-xs text-gray-500">Likes</span>
+          </div>
+          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
+            <Share2 className="w-4 h-4 mb-1 text-green-500" />
+            <span className="text-lg font-bold text-gray-900">{work.stats.shares}</span>
+            <span className="text-xs text-gray-500">Shares</span>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -225,129 +191,79 @@ export default function Works() {
   };
 
   return (
-    <div className="flex flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-orange-400/20 rounded-full blur-3xl" />
+    <div className="flex flex-col bg-gray-50">
+      <section className="relative pt-32 pb-16 bg-[#233DFF] overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
+          <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.div
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500/10 via-pink-500/10 to-orange-500/10 backdrop-blur-sm border border-pink-200/50 dark:border-pink-500/20 rounded-full text-sm font-bold uppercase tracking-wider mb-8"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Play className="w-4 h-4 text-pink-500" />
-              <span className="text-gray-700 dark:text-gray-300">I Nostri Lavori</span>
-            </motion.div>
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
+              <Play className="w-4 h-4" />
+              I Nostri Lavori
+            </div>
 
-            <motion.h1
-              className="text-5xl md:text-7xl font-black mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+            <h1
+              className="text-5xl md:text-6xl font-black text-white mb-6"
               data-testid="works-page-title"
             >
-              <span className="text-social-dark dark:text-white">Contenuti che </span>
-              <span className="bg-gradient-to-r from-cyan-500 via-pink-500 to-orange-500 bg-clip-text text-transparent">
-                spaccano
-              </span>
-            </motion.h1>
+              <span className="italic">Contenuti che</span><br />
+              <span className="text-[#CAE8FF]">spaccano</span>
+            </h1>
 
-            <motion.p
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
+            <p className="text-xl text-white/90 leading-relaxed max-w-xl mx-auto">
               Video virali, reel coinvolgenti e contenuti che fanno crescere i brand.
               Guarda i nostri migliori lavori in azione.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-20" data-testid="works-grid-section">
+      <section className="py-16" data-testid="works-grid-section">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {works.map((work) => (
               <VideoCard key={work.id} work={work} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="relative rounded-3xl overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-pink-500 to-orange-500" />
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.08%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+              Vuoi risultati <span className="text-[#CAE8FF]">così</span>?
+            </h2>
 
-            <div className="relative px-8 py-16 md:py-20 text-center">
-              <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <TrendingUp className="w-4 h-4" />
-                Risultati garantiti
-              </motion.div>
+            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+              Trasformiamo la tua presenza social in una macchina di engagement.
+              Contenuti che il tuo pubblico ama condividere.
+            </p>
 
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-                Vuoi risultati{' '}
-                <span className="underline decoration-wavy decoration-white/50">così</span>?
-              </h2>
-
-              <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Trasformiamo la tua presenza social in una macchina di engagement.
-                Contenuti che il tuo pubblico ama condividere.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contact" onClick={handleScrollTop}>
-                  <Button
-                    className="group bg-white text-pink-600 px-8 py-6 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20"
-                    data-testid="works-cta-button"
-                  >
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Parliamo del tuo progetto
-                    <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link href="/clients" onClick={handleScrollTop}>
-                  <Button
-                    variant="outline"
-                    className="bg-white/10 border-white/30 text-white px-8 py-6 rounded-2xl font-bold text-lg backdrop-blur-sm"
-                    data-testid="works-clients-button"
-                  >
-                    Vedi i nostri clienti
-                  </Button>
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/contact" onClick={handleScrollTop}>
+                <Button
+                  className="bg-[#233DFF] text-white px-8 py-6 rounded-full font-bold text-lg shadow-xl hover:bg-[#1a2fc7] flex items-center gap-2"
+                  data-testid="works-cta-button"
+                >
+                  Parliamo del tuo progetto
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
+              <Link href="/clients" onClick={handleScrollTop}>
+                <Button
+                  variant="outline"
+                  className="bg-transparent border-2 border-white/30 text-white px-8 py-6 rounded-full font-bold text-lg hover:bg-white/10"
+                  data-testid="works-clients-button"
+                >
+                  Vedi i nostri clienti
+                </Button>
+              </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
