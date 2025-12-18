@@ -14,7 +14,7 @@ export function Logo({ className = "h-10", variant = 'dark' }: LogoProps) {
         className="h-full w-auto object-contain"
       />
       <span className={`font-bold text-xl tracking-tight ${variant === 'dark' ? 'text-[#050A30]' : 'text-white'}`}>
-        Social<span className="text-[#233DFF]">Wave</span>
+        Social<span className="text-[#ffffff]">Wave</span>
       </span>
     </div>
   );
