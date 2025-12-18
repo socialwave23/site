@@ -1,117 +1,47 @@
 import { Link } from 'wouter';
-import { ArrowRight } from 'lucide-react';
-import { SiTiktok, SiInstagram } from 'react-icons/si';
+import { ArrowRight, Camera, Video, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
-import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
-
 import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
-import foto2 from "@assets/Foto_esempio_ristorazione_SW2_1766092218578.jpg";
-import foto6 from "@assets/Foto_esempio_ristorazione_SW6_1766092218577.jpg";
-import foto10 from "@assets/Foto_esempio_ristorazione_SW10_1766092218577.jpg";
-import foto14 from "@assets/Foto_esempio_ristorazione_SW14_1766092218580.jpg";
-import foto15 from "@assets/Foto_esempio_ristorazione_SW15_1766092218577.jpg";
-import foto21 from "@assets/Foto_esempio_ristorazione_SW21_1766092218578.jpg";
-import foto22 from "@assets/Foto_esempio_ristorazione_SW22_1766092218580.jpg";
-import foto23 from "@assets/Foto_esempio_ristorazione_SW23_1766092218580.jpg";
-import foto24 from "@assets/Foto_esempio_ristorazione_SW24_1766092218579.jpg";
-import foto25 from "@assets/Foto_esempio_ristorazione_SW25_1766092218577.jpg";
-import foto26 from "@assets/Foto_esempio_ristorazione_SW26_1766092218578.jpg";
-import foto28 from "@assets/Foto_esempio_ristorazione_SW28.jpg_1766092218579.jpg";
-import scw01423 from "@assets/SCW01423_1766092218578.jpg";
-import scw01425 from "@assets/SCW01425_1766092218578.jpg";
-import scw01836 from "@assets/SCW01836_1766092218579.jpg";
-import scw03269 from "@assets/SCW03269_1766092218577.jpg";
-import scw03300 from "@assets/SCW03300_1766092218577.jpg";
-import scw08138 from "@assets/SCW08138_1766092218579.jpg";
-import scw08342 from "@assets/SCW08342_1766092218579.jpg";
+import dsc01147 from "@assets/DSC01147_1766092496651.jpg";
+import scw03896 from "@assets/SCW03896_1766092496651.jpg";
+import foto5 from "@assets/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
 
-interface PortfolioProject {
-  id: string;
-  name: string;
-  category: string;
-  image: string;
-  logo?: string;
-  size: 'small' | 'medium' | 'large';
-}
-
-const portfolioProjects: PortfolioProject[] = [
-  { id: '1', name: 'I Porci Comodi', category: 'FOOD & BEVERAGE', image: heroPhoto, logo: logoPorciComodi, size: 'large' },
-  { id: '2', name: 'La Panacea', category: 'BAR & COCKTAILS', image: heroPhoto, logo: logoPanacea, size: 'medium' },
-  { id: '3', name: 'Eleven Cafe', category: 'RISTORAZIONE', image: heroPhoto, logo: logoEleven, size: 'medium' },
-  { id: '4', name: 'Ristorante Locale', category: 'FOOD & BEVERAGE', image: heroPhoto, size: 'small' },
-  { id: '5', name: 'Pub Irlandese', category: 'EVENTI', image: heroPhoto, size: 'small' },
+const categories = [
+  {
+    id: 'foto',
+    title: 'Foto',
+    emoji: '📸',
+    icon: Camera,
+    description: 'Scatti professionali che catturano l\'essenza del tuo brand',
+    stats: '40+ progetti',
+    images: [foto1, dsc01147, scw03896, foto5],
+    gradient: 'from-[#233DFF] to-[#050A30]',
+    path: '/works/foto'
+  },
+  {
+    id: 'video',
+    title: 'Video',
+    emoji: '🎬',
+    icon: Video,
+    description: 'Contenuti video virali per TikTok e Instagram',
+    stats: '150K+ views',
+    images: [scw03896, foto1, dsc01147, foto5],
+    gradient: 'from-[#050A30] to-[#233DFF]',
+    path: '/works/video'
+  },
+  {
+    id: 'social',
+    title: 'Profili Social',
+    emoji: '📱',
+    icon: Smartphone,
+    description: 'Gestione completa dei tuoi canali social',
+    stats: '25K+ followers gestiti',
+    images: [dsc01147, scw03896, foto5, foto1],
+    gradient: 'from-[#233DFF] via-[#050A30] to-[#233DFF]',
+    path: '/works/social'
+  }
 ];
-
-const photoGallery = [
-  { id: 1, image: foto1 },
-  { id: 2, image: foto2 },
-  { id: 3, image: foto6 },
-  { id: 4, image: foto10 },
-  { id: 5, image: foto14 },
-  { id: 6, image: foto15 },
-  { id: 7, image: foto21 },
-  { id: 8, image: foto22 },
-  { id: 9, image: foto23 },
-  { id: 10, image: foto24 },
-  { id: 11, image: foto25 },
-  { id: 12, image: foto26 },
-  { id: 13, image: foto28 },
-  { id: 14, image: scw01423 },
-  { id: 15, image: scw01425 },
-  { id: 16, image: scw01836 },
-  { id: 17, image: scw03269 },
-  { id: 18, image: scw03300 },
-  { id: 19, image: scw08138 },
-  { id: 20, image: scw08342 },
-];
-
-const videoProjects = [
-  { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+' },
-  { id: 2, title: 'Cocktail Experience', client: 'La Panacea', platform: 'Instagram', views: '45K+' },
-  { id: 3, title: 'Event Highlight', client: 'Eleven Cafe', platform: 'TikTok', views: '80K+' },
-];
-
-const managedProfiles = [
-  { id: 1, name: 'I Porci Comodi', handle: '@iporcicomodipisa', logo: logoPorciComodi, followers: '12.5K', platform: 'instagram' },
-  { id: 2, name: 'La Panacea', handle: '@lapanaceapisa', logo: logoPanacea, followers: '8.2K', platform: 'instagram' },
-  { id: 3, name: 'Eleven Cafe', handle: '@elevencafepisa', logo: logoEleven, followers: '5.8K', platform: 'tiktok' },
-];
-
-function PhoneMockup({ project, className = '' }: { project: PortfolioProject; className?: string }) {
-  const sizeClasses = {
-    small: 'w-40 h-64',
-    medium: 'w-48 h-80',
-    large: 'w-56 h-96',
-  };
-
-  return (
-    <div className={`relative ${sizeClasses[project.size]} ${className}`}>
-      <div className="absolute inset-0 bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden border-4 border-slate-800">
-        <img 
-          src={project.image} 
-          alt={project.name}
-          className="w-full h-full object-cover"
-        />
-        {project.logo && (
-          <div className="absolute top-4 left-4 right-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 flex items-center justify-center">
-              <img src={project.logo} alt={project.name} className="h-8 object-contain" />
-            </div>
-          </div>
-        )}
-        <div className="absolute bottom-4 left-4 right-4">
-          <div className="bg-[#233DFF] text-white text-xs font-bold px-3 py-2 rounded-full text-center uppercase tracking-wider">
-            {project.category}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Works() {
   const handleScrollTop = () => {
@@ -119,174 +49,101 @@ export default function Works() {
   };
 
   return (
-    <div className="flex flex-col bg-gray-50">
-      <section className="relative pt-32 pb-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4 animate-fade-in">Progetti</p>
+    <div className="flex flex-col bg-gray-50 min-h-screen">
+      <section className="relative pt-32 pb-20 bg-[#050A30] overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-[#233DFF] rounded-full blur-[120px] animate-pulse-slow"></div>
+          <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-[#CAE8FF] rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#233DFF]/50 rounded-full blur-[100px] animate-float"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <p className="text-[#CAE8FF] font-semibold text-sm uppercase tracking-wider mb-4 animate-fade-in">I nostri lavori</p>
             
             <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 italic animate-slide-up"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 italic animate-slide-up"
               data-testid="works-page-title"
             >
-              I nostri<br />
-              <span className="text-[#233DFF]">lavori</span>
+              Cosa<br />
+              <span className="text-[#CAE8FF]">creiamo</span>
             </h1>
 
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in">
+            <p className="text-xl text-white/70 max-w-2xl mx-auto animate-fade-in">
               Foto professionali, video virali e profili social gestiti con passione per le aziende di Pisa e provincia.
             </p>
-          </div>
-
-          <div className="relative h-[500px] flex items-center justify-center mb-8">
-            <div className="flex items-end justify-center gap-4">
-              <PhoneMockup 
-                project={portfolioProjects[3]} 
-                className="transform -rotate-12 translate-y-8 opacity-80 hidden md:block animate-float-slow" 
-              />
-              <PhoneMockup 
-                project={portfolioProjects[1]} 
-                className="transform -rotate-6 translate-y-4 z-10 animate-float" 
-              />
-              <PhoneMockup 
-                project={portfolioProjects[0]} 
-                className="z-20 animate-float-slow" 
-              />
-              <PhoneMockup 
-                project={portfolioProjects[2]} 
-                className="transform rotate-6 translate-y-4 z-10 animate-float" 
-              />
-              <PhoneMockup 
-                project={portfolioProjects[4]} 
-                className="transform rotate-12 translate-y-8 opacity-80 hidden md:block animate-float-slow" 
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white" data-testid="photo-section">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-5xl mb-4 block">📸</span>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Foto
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              Scatti professionali che catturano l'essenza del tuo brand
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-7xl mx-auto">
-            {photoGallery.map((photo, idx) => {
-              const isLarge = idx === 0 || idx === 7 || idx === 14;
-              const isMedium = idx === 3 || idx === 10 || idx === 17;
-              return (
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {categories.map((category, idx) => (
+              <Link 
+                key={category.id} 
+                href={category.path} 
+                onClick={handleScrollTop}
+                className="group"
+              >
                 <div 
-                  key={photo.id} 
-                  className={`group relative overflow-hidden rounded-xl ${
-                    isLarge ? 'col-span-2 row-span-2' : isMedium ? 'col-span-2' : ''
-                  } animate-fade-in`}
+                  className="relative h-[500px] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl animate-fade-in"
                   style={{ 
-                    animationDelay: `${idx * 50}ms`,
+                    animationDelay: `${idx * 150}ms`,
                     animationFillMode: 'backwards'
                   }}
-                  data-testid={`photo-item-${photo.id}`}
+                  data-testid={`category-card-${category.id}`}
                 >
-                  <img 
-                    src={photo.image} 
-                    alt={`Portfolio photo ${photo.id}`}
-                    className={`w-full h-full object-cover ${isLarge ? 'aspect-square' : 'aspect-square'} group-hover:scale-105 transition-transform duration-700 ease-out`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#233DFF] animate-pulse"></div>
-                        <span className="text-white text-sm font-medium">SocialWave</span>
+                  <div className={`absolute inset-0 bg-gradient-to-b ${category.gradient}`}></div>
+                  
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute right-0 top-0 w-48 h-48 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow"></div>
+                    <div className="absolute left-0 bottom-1/3 w-32 h-32 bg-[#233DFF] rounded-full blur-2xl animate-float"></div>
+                  </div>
+
+                  <div className="absolute top-6 left-6 right-6 grid grid-cols-2 gap-2 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                    {category.images.map((img, imgIdx) => (
+                      <div 
+                        key={imgIdx} 
+                        className="aspect-square rounded-xl overflow-hidden transition-transform duration-700"
+                        style={{ 
+                          transform: `rotate(${imgIdx % 2 === 0 ? -3 : 3}deg)`,
+                          transitionDelay: `${imgIdx * 50}ms`
+                        }}
+                      >
+                        <img 
+                          src={img} 
+                          alt="" 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#050A30] via-[#050A30]/90 to-transparent">
+                    <span className="text-5xl mb-4 block transform group-hover:scale-110 transition-transform duration-300">{category.emoji}</span>
+                    <h2 className="text-3xl font-black text-white mb-2 group-hover:text-[#CAE8FF] transition-colors duration-300">
+                      {category.title}
+                    </h2>
+                    <p className="text-white/70 mb-4 text-sm">
+                      {category.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[#CAE8FF] font-bold text-sm">{category.stats}</span>
+                      <div className="w-10 h-10 rounded-full bg-[#233DFF] flex items-center justify-center group-hover:bg-[#CAE8FF] transition-all duration-300 group-hover:scale-110">
+                        <ArrowRight className="w-5 h-5 text-white group-hover:text-[#050A30] transition-colors duration-300" />
                       </div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gray-50" data-testid="video-section">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-5xl mb-4 block">🎬</span>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Video
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              Contenuti video che generano engagement e viralità
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {videoProjects.map((video) => (
-              <div 
-                key={video.id}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                    video.platform === 'TikTok' ? 'bg-black text-white' : 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
-                  }`}>
-                    {video.platform === 'TikTok' ? <SiTiktok className="inline mr-1" size={14} /> : <SiInstagram className="inline mr-1" size={14} />}
-                    {video.platform}
-                  </span>
-                  <span className="text-[#233DFF] font-bold">{video.views}</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{video.title}</h3>
-                <p className="text-gray-500">{video.client}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white" data-testid="profiles-section">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-5xl mb-4 block">📱</span>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Profili Social gestiti
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              Account che gestiamo quotidianamente con strategia e creatività
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {managedProfiles.map((profile) => (
-              <div 
-                key={profile.id}
-                className="bg-gray-50 rounded-2xl p-6 hover:bg-[#CAE8FF]/20 transition-all duration-300 border border-gray-100 hover:border-[#233DFF]/30"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden bg-white p-2 shadow-sm">
-                    <img src={profile.logo} alt={profile.name} className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{profile.name}</h3>
-                    <p className="text-sm text-gray-500">{profile.handle}</p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-black text-[#233DFF]">{profile.followers}</span>
-                  <span className="text-sm text-gray-500">followers</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <section className="py-20 bg-[#050A30] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl animate-pulse-slow"></div>
           <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
@@ -297,7 +154,7 @@ export default function Works() {
               Vuoi risultati <span className="text-[#CAE8FF]">così</span>?
             </h2>
 
-            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
               Trasformiamo la tua presenza social in una macchina di engagement.
               Contenuti che il tuo pubblico ama condividere.
             </p>

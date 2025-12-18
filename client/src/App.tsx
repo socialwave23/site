@@ -9,6 +9,9 @@ import Home from "@/pages/Home";
 import Portfolio from "@/pages/Portfolio";
 import Clients from "@/pages/Clients";
 import Works from "@/pages/Works";
+import WorksFoto from "@/pages/WorksFoto";
+import WorksVideo from "@/pages/WorksVideo";
+import WorksSocial from "@/pages/WorksSocial";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
@@ -19,6 +22,9 @@ function Router() {
       <Route path="/portfolio" component={Portfolio} />
       <Route path="/clients" component={Clients} />
       <Route path="/works" component={Works} />
+      <Route path="/works/foto" component={WorksFoto} />
+      <Route path="/works/video" component={WorksVideo} />
+      <Route path="/works/social" component={WorksSocial} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
