@@ -22,6 +22,10 @@ import backstage4 from "@assets/IMG_1860_1766094261378.jpeg";
 import backstage5 from "@assets/SCW02026_1766094261379.jpg";
 import backstage6 from "@assets/PHOTO-2024-01-04-18-49-54_1766094261379.jpg";
 
+import portfolioPhoto1 from "@assets/DSC01147_1766092496651.jpg";
+import portfolioPhoto2 from "@assets/Foto_esempio_ristorazione_SW6_1766092218577.jpg";
+import portfolioPhoto3 from "@assets/DSC09073_1766092496651.jpg";
+
 const clientLogos = [
   { id: 1, name: 'Amaro', logo: logoAmaro },
   { id: 2, name: 'Aurelia Car', logo: logoAureliaCar },
@@ -127,9 +131,11 @@ export default function Home() {
                   />
                 </div>
                 <div className="absolute -right-6 bottom-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-[#CAE8FF] to-[#233DFF] flex items-center justify-center">
-                    <SiInstagram size={48} className="text-white" />
-                  </div>
+                  <img 
+                    src={portfolioPhoto1} 
+                    alt="Portfolio content" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -146,7 +152,7 @@ export default function Home() {
             {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div 
                 key={`logo-${logo.id}-${index}`} 
-                className="flex-shrink-0 transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
+                className="flex-shrink-0 transition-all duration-300 hover:scale-110"
               >
                 <img 
                   src={logo.logo} 
@@ -212,21 +218,25 @@ export default function Home() {
             <div className="relative flex justify-center">
               <div className="relative">
                 <div className="absolute -left-12 top-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform -rotate-12 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-purple-600 via-pink-500 to-rose-400 flex items-center justify-center">
-                    <SiInstagram size={40} className="text-white" />
-                  </div>
+                  <img 
+                    src={portfolioPhoto2} 
+                    alt="Food photography" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="relative w-56 h-[400px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
                   <img 
-                    src={heroPhoto} 
+                    src={portfolioPhoto3} 
                     alt="Social media content" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
-                  <div className="w-full h-full bg-black flex items-center justify-center">
-                    <SiTiktok size={40} className="text-white" />
-                  </div>
+                  <img 
+                    src={portfolioPhoto1} 
+                    alt="Restaurant photography" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
