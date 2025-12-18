@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { ArrowRight, Camera, Palette, Share2, TrendingUp, Users, Zap, Heart, BarChart3 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 
@@ -29,31 +29,31 @@ const clientLogos = [
 ];
 
 const stats = [
-  { value: '150+', label: 'Contenuti pubblicati ogni mese', icon: Camera },
-  { value: '50%', label: 'Incremento vendite tramite social', icon: TrendingUp },
-  { value: '5X', label: 'Aumento engagement medio', icon: Heart },
-  { value: '98%', label: 'Clienti soddisfatti', icon: Users },
+  { value: '150+', label: 'Contenuti pubblicati ogni mese', emoji: '📸' },
+  { value: '50%', label: 'Incremento vendite tramite social', emoji: '📈' },
+  { value: '5X', label: 'Aumento engagement medio', emoji: '❤️' },
+  { value: '98%', label: 'Clienti soddisfatti', emoji: '👥' },
 ];
 
 const serviceCategories = [
-  { id: 'social', label: 'Social Media', icon: Share2, active: true },
-  { id: 'photo', label: 'Foto e Video', icon: Camera, active: false },
-  { id: 'design', label: 'Grafica', icon: Palette, active: false },
+  { id: 'social', label: 'Social Media', emoji: '📱', active: true },
+  { id: 'photo', label: 'Foto e Video', emoji: '🎬', active: false },
+  { id: 'design', label: 'Grafica', emoji: '✏️', active: false },
 ];
 
 const features = [
   {
-    icon: Zap,
+    emoji: '⚡',
     title: 'Contenuti che convertono',
     description: 'Ogni post è pensato per portare clienti al tuo locale.',
   },
   {
-    icon: BarChart3,
+    emoji: '📊',
     title: 'Dati e analisi',
     description: 'Report mensili con metriche chiare e obiettivi raggiunti.',
   },
   {
-    icon: Heart,
+    emoji: '🏠',
     title: 'Approccio locale',
     description: 'Conosciamo Pisa e sappiamo come parlare ai tuoi clienti.',
   },
@@ -195,7 +195,7 @@ export default function Home() {
                   data-testid={`service-category-${service.id}`}
                 >
                   {service.label}
-                  <service.icon size={18} />
+                  <span className="text-lg">{service.emoji}</span>
                 </Button>
               </Link>
             ))}
@@ -258,8 +258,8 @@ export default function Home() {
                 className="text-center"
                 data-testid={`stat-${index}`}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#CAE8FF] text-[#233DFF] mb-4">
-                  <stat.icon size={24} />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#CAE8FF] text-2xl mb-4">
+                  {stat.emoji}
                 </div>
                 <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{stat.value}</div>
                 <p className="text-gray-600 text-sm md:text-base">{stat.label}</p>
@@ -284,8 +284,8 @@ export default function Home() {
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#CAE8FF] rounded-xl flex items-center justify-center text-[#233DFF] flex-shrink-0">
-                      <feature.icon size={24} />
+                    <div className="w-12 h-12 bg-[#CAE8FF] rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
+                      {feature.emoji}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-gray-900 mb-1">{feature.title}</h3>

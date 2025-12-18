@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { Share2, Camera, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { Link } from 'wouter';
@@ -7,9 +6,9 @@ import { Link } from 'wouter';
 import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
 
 const serviceCategories = [
-  { id: 'social', label: 'Social Media', icon: Share2 },
-  { id: 'photo', label: 'Foto e Video', icon: Camera },
-  { id: 'design', label: 'Grafica e Stampa', icon: Palette },
+  { id: 'social', label: 'Social Media', emoji: '📱' },
+  { id: 'photo', label: 'Foto e Video', emoji: '🎬' },
+  { id: 'design', label: 'Grafica e Stampa', emoji: '✏️' },
 ];
 
 const services = {
@@ -191,7 +190,7 @@ export default function Portfolio() {
                 data-testid={`service-tab-${service.id}`}
               >
                 {service.label}
-                <service.icon size={18} />
+                <span className="text-lg">{service.emoji}</span>
               </Button>
             ))}
           </div>
