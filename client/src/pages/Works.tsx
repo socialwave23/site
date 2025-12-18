@@ -8,6 +8,27 @@ import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
 import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
 import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
 
+import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
+import foto2 from "@assets/Foto_esempio_ristorazione_SW2_1766092218578.jpg";
+import foto6 from "@assets/Foto_esempio_ristorazione_SW6_1766092218577.jpg";
+import foto10 from "@assets/Foto_esempio_ristorazione_SW10_1766092218577.jpg";
+import foto14 from "@assets/Foto_esempio_ristorazione_SW14_1766092218580.jpg";
+import foto15 from "@assets/Foto_esempio_ristorazione_SW15_1766092218577.jpg";
+import foto21 from "@assets/Foto_esempio_ristorazione_SW21_1766092218578.jpg";
+import foto22 from "@assets/Foto_esempio_ristorazione_SW22_1766092218580.jpg";
+import foto23 from "@assets/Foto_esempio_ristorazione_SW23_1766092218580.jpg";
+import foto24 from "@assets/Foto_esempio_ristorazione_SW24_1766092218579.jpg";
+import foto25 from "@assets/Foto_esempio_ristorazione_SW25_1766092218577.jpg";
+import foto26 from "@assets/Foto_esempio_ristorazione_SW26_1766092218578.jpg";
+import foto28 from "@assets/Foto_esempio_ristorazione_SW28.jpg_1766092218579.jpg";
+import scw01423 from "@assets/SCW01423_1766092218578.jpg";
+import scw01425 from "@assets/SCW01425_1766092218578.jpg";
+import scw01836 from "@assets/SCW01836_1766092218579.jpg";
+import scw03269 from "@assets/SCW03269_1766092218577.jpg";
+import scw03300 from "@assets/SCW03300_1766092218577.jpg";
+import scw08138 from "@assets/SCW08138_1766092218579.jpg";
+import scw08342 from "@assets/SCW08342_1766092218579.jpg";
+
 interface PortfolioProject {
   id: string;
   name: string;
@@ -26,12 +47,26 @@ const portfolioProjects: PortfolioProject[] = [
 ];
 
 const photoGallery = [
-  { id: 1, image: heroPhoto, title: 'Food Photography' },
-  { id: 2, image: heroPhoto, title: 'Interior Design' },
-  { id: 3, image: heroPhoto, title: 'Product Shots' },
-  { id: 4, image: heroPhoto, title: 'Event Coverage' },
-  { id: 5, image: heroPhoto, title: 'Brand Identity' },
-  { id: 6, image: heroPhoto, title: 'Lifestyle' },
+  { id: 1, image: foto1 },
+  { id: 2, image: foto2 },
+  { id: 3, image: foto6 },
+  { id: 4, image: foto10 },
+  { id: 5, image: foto14 },
+  { id: 6, image: foto15 },
+  { id: 7, image: foto21 },
+  { id: 8, image: foto22 },
+  { id: 9, image: foto23 },
+  { id: 10, image: foto24 },
+  { id: 11, image: foto25 },
+  { id: 12, image: foto26 },
+  { id: 13, image: foto28 },
+  { id: 14, image: scw01423 },
+  { id: 15, image: scw01425 },
+  { id: 16, image: scw01836 },
+  { id: 17, image: scw03269 },
+  { id: 18, image: scw03300 },
+  { id: 19, image: scw08138 },
+  { id: 20, image: scw08342 },
 ];
 
 const videoProjects = [
@@ -142,25 +177,38 @@ export default function Works() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {photoGallery.map((photo, idx) => (
-              <div 
-                key={photo.id} 
-                className={`group relative overflow-hidden rounded-2xl ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <img 
-                  src={photo.image} 
-                  alt={photo.title}
-                  className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4">
-                    <span className="text-white font-bold">{photo.title}</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-7xl mx-auto">
+            {photoGallery.map((photo, idx) => {
+              const isLarge = idx === 0 || idx === 7 || idx === 14;
+              const isMedium = idx === 3 || idx === 10 || idx === 17;
+              return (
+                <div 
+                  key={photo.id} 
+                  className={`group relative overflow-hidden rounded-xl ${
+                    isLarge ? 'col-span-2 row-span-2' : isMedium ? 'col-span-2' : ''
+                  } animate-fade-in`}
+                  style={{ 
+                    animationDelay: `${idx * 50}ms`,
+                    animationFillMode: 'backwards'
+                  }}
+                  data-testid={`photo-item-${photo.id}`}
+                >
+                  <img 
+                    src={photo.image} 
+                    alt={`Portfolio photo ${photo.id}`}
+                    className={`w-full h-full object-cover ${isLarge ? 'aspect-square' : 'aspect-square'} group-hover:scale-105 transition-transform duration-700 ease-out`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-[#233DFF] animate-pulse"></div>
+                        <span className="text-white text-sm font-medium">SocialWave</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
