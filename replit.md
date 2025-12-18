@@ -25,17 +25,25 @@ Preferred communication style: Simple, everyday language.
 - Form handling with React Hook Form and Zod validation
 
 **Design System**
-- Typography: Inter font family from Google Fonts
-- Color palette: Custom "social" theme with dark navy, sky blue, and light accents
+- Typography: Inter font family from Google Fonts, with bold italic headings
+- Color palette: Blue (#233DFF) primary, light blue (#CAE8FF) accent, inspired by makeitweb.it
+- Icons: Apple emojis used throughout instead of icon libraries (📱 Social Media, 🎬 Foto e Video, ✏️ Grafica)
+- Visual elements: Phone mockups as primary display for portfolio content
 - Spacing system: Tailwind's standardized spacing scale
 - Component patterns: Cards, buttons, forms following modern web design principles
 - Design guidelines documented in `design_guidelines.md` for consistency
 
 **Page Structure**
-- Home: Hero section, services showcase, client ticker, CTA sections
-- Portfolio: Filterable project gallery with category-based filtering
+- Home: Blue hero section, client logos ticker, "Cosa facciamo" services section with emoji buttons, stats with emoji icons, features section, and CTA
+- Portfolio: Tabbed interface for 3 service categories (Social Media, Foto e Video, Grafica e Stampa) with phone mockups
+- Works: Portfolio showcase with fan-arranged phone mockups and category filters
+- Clients: Client showcase page
 - Contact: Form with validation for client inquiries
 - 404: Custom not-found page
+
+**Navigation**
+- Dropdown menus: "Lavori" shows collections and project preview cards, "Risorse" shows resource cards (Chi siamo, Perché noi, I nostri clienti)
+- Smooth hover interactions with preview cards in dropdowns
 
 ### Backend Architecture
 
