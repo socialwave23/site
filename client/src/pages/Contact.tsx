@@ -1,4 +1,5 @@
-import { Send, MapPin, Phone, Mail, Loader2, MessageCircle } from 'lucide-react';
+import { Send, MapPin, Phone, Mail, Loader2, MessageCircle, ExternalLink } from 'lucide-react';
+import { SiWhatsapp, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -98,24 +99,61 @@ export default function Contact() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm">
                   <div className="bg-[#CAE8FF] p-4 rounded-xl text-[#233DFF] flex-shrink-0">
-                    <Mail size={24} />
+                    <Phone size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Email</h3>
-                    <p className="text-gray-600">info@socialwave.it</p>
+                    <h3 className="font-bold text-lg text-gray-900">Telefono</h3>
+                    <a href="tel:+393457868504" className="text-gray-600 hover:text-[#233DFF] transition-colors" data-testid="contact-phone">345 786 8504</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm">
                   <div className="bg-[#CAE8FF] p-4 rounded-xl text-[#233DFF] flex-shrink-0">
-                    <Phone size={24} />
+                    <Mail size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">Telefono</h3>
-                    <p className="text-gray-600">050 123 4567</p>
-                    <p className="text-gray-400 text-sm">Lun-Ven, 9:00 - 18:00</p>
+                    <h3 className="font-bold text-lg text-gray-900">Email</h3>
+                    <a href="mailto:social.wave23@gmail.com" className="text-gray-600 hover:text-[#233DFF] transition-colors" data-testid="contact-email">social.wave23@gmail.com</a>
                   </div>
                 </div>
+
+                <a 
+                  href="https://wa.me/message/KMMS36SNMMFXK1" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
+                  data-testid="contact-whatsapp"
+                >
+                  <div className="bg-green-100 p-4 rounded-xl text-green-600 flex-shrink-0">
+                    <SiWhatsapp size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-gray-900 flex items-center gap-2">
+                      WhatsApp
+                      <ExternalLink size={14} className="text-gray-400 group-hover:text-green-600 transition-colors" />
+                    </h3>
+                    <p className="text-gray-600 group-hover:text-green-600 transition-colors">Scrivici su WhatsApp</p>
+                  </div>
+                </a>
+
+                <a 
+                  href="https://www.instagram.com/socialwave_agency?igsh=MTFpNmVraDV0aTl2Yw==" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
+                  data-testid="contact-instagram"
+                >
+                  <div className="bg-gradient-to-br from-purple-100 to-pink-100 p-4 rounded-xl text-pink-600 flex-shrink-0">
+                    <SiInstagram size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-gray-900 flex items-center gap-2">
+                      Instagram
+                      <ExternalLink size={14} className="text-gray-400 group-hover:text-pink-600 transition-colors" />
+                    </h3>
+                    <p className="text-gray-600 group-hover:text-pink-600 transition-colors">@socialwave_agency</p>
+                  </div>
+                </a>
 
                 <div className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm">
                   <div className="bg-[#CAE8FF] p-4 rounded-xl text-[#233DFF] flex-shrink-0">

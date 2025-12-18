@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
-import { SiTiktok } from 'react-icons/si';
+import { SiTiktok, SiWhatsapp } from 'react-icons/si';
 import { Logo } from './Logo';
 
 export function Footer() {
@@ -21,13 +21,22 @@ export function Footer() {
             </p>
             <div className="flex gap-4 flex-wrap">
               <a 
-                href="https://www.instagram.com/socialwave.pisa/" 
+                href="https://www.instagram.com/socialwave_agency?igsh=MTFpNmVraDV0aTl2Yw==" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 p-3 rounded-full transition-colors hover:bg-[#233DFF]"
                 data-testid="social-instagram"
               >
                 <Instagram size={20} />
+              </a>
+              <a 
+                href="https://wa.me/message/KMMS36SNMMFXK1" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-3 rounded-full transition-colors hover:bg-green-600"
+                data-testid="social-whatsapp"
+              >
+                <SiWhatsapp size={20} />
               </a>
               <a 
                 href="https://www.tiktok.com/@socialwave.pisa" 
@@ -76,22 +85,22 @@ export function Footer() {
               </li>
               <li>
                 <a 
-                  href="mailto:info@socialwave.it" 
+                  href="mailto:social.wave23@gmail.com" 
                   className="flex items-center gap-3 transition-colors hover:text-white"
                   data-testid="footer-email"
                 >
                   <Mail size={18} className="text-[#CAE8FF]" />
-                  info@socialwave.it
+                  social.wave23@gmail.com
                 </a>
               </li>
               <li>
                 <a 
-                  href="tel:+390501234567" 
+                  href="tel:+393457868504" 
                   className="flex items-center gap-3 transition-colors hover:text-white"
                   data-testid="footer-phone"
                 >
                   <Phone size={18} className="text-[#CAE8FF]" />
-                  050 123 4567
+                  345 786 8504
                 </a>
               </li>
             </ul>

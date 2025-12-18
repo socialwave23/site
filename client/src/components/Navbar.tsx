@@ -1,8 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
+
+import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
+import dsc01147 from "@assets/DSC01147_1766092496651.jpg";
+import scw03896 from "@assets/SCW03896_1766092496651.jpg";
+import foto5 from "@assets/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
 
 const navLinks = [
   { name: 'Servizi', path: '/portfolio' },
@@ -12,9 +17,30 @@ const navLinks = [
 ];
 
 const lavoriCategories = [
-  { name: 'Foto', emoji: '📸', path: '/works' },
-  { name: 'Video', emoji: '🎬', path: '/works' },
-  { name: 'Profili Social gestiti', emoji: '📱', path: '/clients' },
+  { 
+    name: 'Foto', 
+    emoji: '📸', 
+    path: '/works/foto',
+    description: 'Scatti professionali per il tuo brand',
+    stats: '40+ progetti',
+    images: [foto1, dsc01147]
+  },
+  { 
+    name: 'Video', 
+    emoji: '🎬', 
+    path: '/works/video',
+    description: 'Contenuti virali per TikTok e Instagram',
+    stats: '150K+ views',
+    images: [scw03896, foto5]
+  },
+  { 
+    name: 'Profili Social', 
+    emoji: '📱', 
+    path: '/works/social',
+    description: 'Gestione completa dei tuoi canali',
+    stats: '25K+ followers',
+    images: [dsc01147, scw03896]
+  },
 ];
 
 const risorseItems = [
@@ -51,18 +77,47 @@ const risorseItems = [
 function LavoriDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute top-full left-0 w-screen bg-white shadow-xl border-t border-gray-100 z-50">
-      <div className="max-w-4xl mx-auto px-8 py-8">
+      <div className="max-w-5xl mx-auto px-8 py-8">
         <div className="grid grid-cols-3 gap-6">
           {lavoriCategories.map((cat) => (
             <Link key={cat.name} href={cat.path} onClick={onClose}>
-              <div className="group p-6 rounded-xl border border-gray-100 hover:border-[#233DFF] hover:bg-[#CAE8FF]/10 transition-all cursor-pointer">
-                <div className="text-4xl mb-4">{cat.emoji}</div>
-                <h3 className="font-bold text-xl text-gray-900 group-hover:text-[#233DFF] transition-colors mb-2">
-                  {cat.name}
-                </h3>
-                <span className="text-sm text-gray-500 group-hover:text-[#233DFF] transition-colors">
-                  Scopri di più
-                </span>
+              <div className="group relative h-[280px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-testid={`dropdown-${cat.name.toLowerCase().replace(' ', '-')}`}>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#233DFF] to-[#050A30]"></div>
+                
+                <div className="absolute inset-0 opacity-20">
+                  <div className="absolute right-0 top-0 w-24 h-24 bg-[#CAE8FF] rounded-full blur-2xl"></div>
+                  <div className="absolute left-0 bottom-1/3 w-16 h-16 bg-[#233DFF] rounded-full blur-xl"></div>
+                </div>
+
+                <div className="absolute top-4 left-4 right-4 grid grid-cols-2 gap-2 opacity-40 group-hover:opacity-60 transition-opacity duration-300">
+                  {cat.images.map((img, imgIdx) => (
+                    <div 
+                      key={imgIdx} 
+                      className="aspect-square rounded-lg overflow-hidden"
+                      style={{ transform: `rotate(${imgIdx % 2 === 0 ? -3 : 3}deg)` }}
+                    >
+                      <img 
+                        src={img} 
+                        alt="" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#050A30] via-[#050A30]/90 to-transparent">
+                  <span className="text-3xl mb-2 block">{cat.emoji}</span>
+                  <h3 className="font-bold text-xl text-white group-hover:text-[#CAE8FF] transition-colors mb-1">
+                    {cat.name}
+                  </h3>
+                  <p className="text-white/60 text-sm mb-2">{cat.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#CAE8FF] font-semibold text-xs">{cat.stats}</span>
+                    <div className="w-7 h-7 rounded-full bg-[#233DFF] flex items-center justify-center group-hover:bg-[#CAE8FF] transition-all duration-300">
+                      <ArrowRight className="w-3.5 h-3.5 text-white group-hover:text-[#050A30] transition-colors duration-300" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}
