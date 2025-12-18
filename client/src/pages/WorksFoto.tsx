@@ -146,26 +146,37 @@ export default function WorksFoto() {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {photoGallery.map((photo, idx) => (
-              <div 
-                key={photo.id} 
-                className="group relative overflow-hidden rounded-xl cursor-pointer aspect-square animate-fade-in"
-                style={{ 
-                  animationDelay: `${idx * 30}ms`,
-                  animationFillMode: 'backwards'
-                }}
-                data-testid={`photo-item-${photo.id}`}
-              >
-                <img 
-                  src={photo.image} 
-                  alt={`Portfolio photo ${photo.id}`}
-                  className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                <div className="absolute inset-0 border-2 border-[#233DFF] opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[180px]">
+            {photoGallery.map((photo, idx) => {
+              const isLarge = idx === 0 || idx === 5 || idx === 12 || idx === 19 || idx === 26 || idx === 33 || idx === 40;
+              const isTall = idx === 2 || idx === 8 || idx === 15 || idx === 22 || idx === 29 || idx === 36 || idx === 43;
+              const isWide = idx === 4 || idx === 10 || idx === 17 || idx === 24 || idx === 31 || idx === 38 || idx === 45;
+              
+              let spanClass = '';
+              if (isLarge) spanClass = 'col-span-2 row-span-2';
+              else if (isTall) spanClass = 'row-span-2';
+              else if (isWide) spanClass = 'col-span-2';
+              
+              return (
+                <div 
+                  key={photo.id} 
+                  className={`group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in ${spanClass}`}
+                  style={{ 
+                    animationDelay: `${idx * 30}ms`,
+                    animationFillMode: 'backwards'
+                  }}
+                  data-testid={`photo-item-${photo.id}`}
+                >
+                  <img 
+                    src={photo.image} 
+                    alt={`Portfolio photo ${photo.id}`}
+                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  <div className="absolute inset-0 border-2 border-[#233DFF] opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

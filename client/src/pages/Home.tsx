@@ -137,21 +137,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 overflow-hidden" data-testid="clients-section">
-        <div className="container mx-auto px-4 mb-8">
+      <section className="py-12 bg-gray-50 overflow-hidden" data-testid="clients-section">
+        <div className="container mx-auto px-4 mb-6">
           <h2 className="text-center text-2xl font-bold text-gray-800">Credono in noi</h2>
         </div>
         <div className="relative flex overflow-x-hidden">
-          <div className="animate-scroll whitespace-nowrap flex gap-8 px-8 items-center">
+          <div className="animate-scroll whitespace-nowrap flex gap-4 px-4 items-center">
             {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div 
                 key={`logo-${logo.id}-${index}`} 
-                className="flex-shrink-0 bg-white rounded-2xl p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105"
+                className="flex-shrink-0 transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
               >
                 <img 
                   src={logo.logo} 
                   alt={logo.name} 
-                  className="h-20 w-20 object-contain"
+                  className="h-24 w-24 object-contain"
                 />
               </div>
             ))}
