@@ -1,159 +1,144 @@
 # SocialWave Agency - Design Guidelines
 
 ## Design Approach
-**Reference-Based Design**: Drawing inspiration from modern agency websites with Italian creative flair, combining Airbnb's polished card aesthetics, Linear's bold typography, and contemporary social media platform design patterns.
+**Modern Italian Agency Style**: Inspired by makeitweb.it with bold orange hero sections, strong typography, phone mockups showcasing work, and clean white sections. Focus on social media marketing services (TikTok/Instagram) without website development.
+
+## Brand Colors
+**Primary Gradient**: Warm orange (#f97316) as hero background
+**Accent Colors**: 
+- Cyan/Teal for highlights
+- Pink/Magenta for secondary accents  
+- Purple for tertiary elements
+- Orange (#f97316) for primary CTAs and hero backgrounds
+
+**Neutrals**:
+- Dark navy (#1e293b) for text and dark sections
+- White (#ffffff) for main backgrounds
+- Light gray (#f8fafc) for subtle section backgrounds
 
 ## Typography System
 **Font Family**: Inter (Google Fonts)
-- Headlines (Hero): 900 weight, 5xl-7xl sizes (text-5xl md:text-7xl)
-- Section Titles: 800-900 weight, 4xl-5xl sizes
-- Subheadings: 700 weight, xl-2xl sizes
-- Body Text: 400 weight, base-xl sizes
-- Small Text/Labels: 600-700 weight, sm-xs sizes, uppercase with wide tracking
+- Hero Headlines: 900 weight, very large (text-5xl to text-7xl), italic style
+- Section Titles: 800-900 weight, text-4xl to text-5xl
+- Subheadings: 700 weight, text-xl to text-2xl
+- Body Text: 400 weight, text-base to text-lg
+- Labels/Buttons: 600-700 weight, text-sm, uppercase tracking
+
+**Special Text Treatments**:
+- Key words in orange to create emphasis
+- Bold italic for strong statements
 
 ## Layout System
-**Spacing Primitives**: Tailwind units of 2, 4, 6, 8, 12, 16, 20, 24
+**Spacing**: Generous whitespace throughout
 - Container: max-w-7xl with px-4 sm:px-6 lg:px-8
-- Section Padding: py-20 to py-24 for desktop, py-12 for mobile
-- Component Gaps: gap-4, gap-6, gap-8, gap-12, gap-16
-- Card Padding: p-6, p-8, p-10
+- Section Padding: py-20 to py-28 for desktop
+- Component Gaps: gap-6, gap-8, gap-12, gap-16
 
 ## Navigation
 **Fixed Navbar**:
-- Transparent initially, becomes white/90 with backdrop-blur on scroll
-- Logo left, navigation center-right, CTA button right
-- Mobile: Hamburger menu with slide-down overlay
-- Height: py-4 (scrolled) to py-6 (top)
+- White background with subtle shadow
+- Logo left, navigation center, phone CTA right
+- Dropdown menus for services/works sections
+- Pills/badges for current section highlight
+- Mobile: Hamburger menu
 
 ## Homepage Structure
 
 ### Hero Section
-**Layout**: Two-column grid (md:grid-cols-2), min-h-screen, centered
-**Left Column**:
-- Small badge/pill with brand tagline
-- Large headline with gradient accent on key phrase
-- Descriptive paragraph (text-xl, max-w-lg)
-- Two CTAs: Primary (filled) + Secondary (outlined)
+**Full-width orange background** (#f97316)
+- Two-column layout on desktop
+- Left: Large bold headline with key words in different color
+- Left: Subtitle text
+- Left: CTA button (rounded, teal/cyan background)
+- Right: Phone mockups showing social media work (overlapping, floating effect)
 
-**Right Column - Visual Display**:
-- Large mockup device (phone/screen representation) with 3rem rounded corners
-- Aspect-square container with rotation effect (rotate-3, hover:rotate-0)
-- Interior: Social platform cards in 2-column grid
-- Floating animation (animate-float: 6s ease-in-out)
-- Background gradient blobs with blur effects
+### Service Tabs
+- Horizontal row of rounded buttons/pills
+- Active state: filled background
+- Services: Social Media, Foto e Video, Grafica e Stampa (NO Siti Web)
 
-### Client Ticker Section
-- Full-width horizontal scroll
-- Infinite animation (40s linear)
-- Logo containers: grayscale with hover color reveal
-- Height: py-12
+### Service Details
+**Orange background section** with:
+- Left side: Feature cards with titles and descriptions
+- Center: Phone mockup showing real work examples
+- Right side: More feature cards
+- Features use icons and bold headings
 
-### Services Grid
-**Layout**: 4-column grid on desktop (lg:grid-cols-4), 2 on tablet, 1 on mobile
-**Cards**:
-- Rounded-3xl containers
-- Icon in rounded square (14×14 units) at top
-- Title + description stacked below
-- Hover state: background shifts, icon inverts
+### Client Logos Section
+**"Credono in noi"** heading
+- Horizontal scrolling logo ticker
+- Gray rounded pill containers
+- Grayscale logos with hover color reveal
 
-### CTA Section
-**Full-width**: Gradient background with overlay blobs
-- Centered content, max-w-2xl
-- Large headline (text-4xl md:text-5xl)
-- Single prominent CTA button
+### Stats Section
+**Light background** with large numbers:
+- 150+ Contenuti pubblicati ogni mese
+- 50% Incremento vendite tramite social
+- 5X Aumento engagement medio
+- 98% Clienti soddisfatti
 
-## Portfolio Page
+### Team/About Section
+**Two columns**:
+- Left: Team photo in rounded container
+- Right: Text about approach, skills progress bars
 
-### Layout
-- Center-aligned header with title + description
-- Filter pills: Horizontal flex-wrap, rounded-full buttons
-- Grid: 3 columns desktop (lg:grid-cols-3), 2 tablet, 1 mobile
+### Portfolio Preview
+**"Portfolio" section**:
+- Floating phone mockups with project images
+- Category badges on each mockup
+- Interactive hover effects
 
-### Portfolio Cards
-- Aspect-[4/3] image containers
-- Rounded-3xl with shadow
-- Overlay gradient on hover (from-dark/90 to transparent)
-- Content slides up on hover with stagger delays
-- Arrow icon in circle bottom-right
+### Footer CTA
+**"Solo per aziende di Pisa e provincia"**
+- Dark background
+- Large typography with accent colors
+- Contact info columns
+- Social media buttons
 
-## Contact Page
+## Portfolio/Works Page
+- Grid of phone mockups or project cards
+- Category filter buttons
+- Each card shows project image + client name + arrow
 
-### Two-Column Layout (lg:grid-cols-2)
-**Left Column - Information**:
-- Large headline (text-5xl)
-- Three info blocks with icon circles (bg-blue-50, rounded-2xl)
-- Icons: Mail, Phone, MapPin
-
-**Right Column - Form**:
-- Background card (bg-gray-50, rounded-3xl, shadow-lg)
-- Fields: Name, Company (grid cols-2), Email, Message (textarea rows-4)
-- Inputs: rounded-xl, focus ring effects
-- Submit button: full-width, rounded-xl with icon
+## Clients Page
+- Grid of client cards with logos
+- Stats and Instagram embeds
+- Clean white cards with subtle shadows
 
 ## Component Library
 
 ### Buttons
-**Primary**: Rounded-full, bold font, shadow effects, gap-2 for icon
-**Secondary**: Outlined with border-2, rounded-full
-**Hover**: Slight lift (-translate-y-1) with increased shadow
+**Primary CTA**: Rounded-full, teal/cyan background, white text, arrow icon
+**Secondary**: White background with border, dark text
+**Service Tabs**: Rounded-full, toggle between filled/outlined
 
 ### Cards
-**Standard**: Rounded-3xl, shadow-lg, p-8
-**Interactive**: Hover scale or background shift
-**Portfolio**: Rounded-3xl with image overflow and gradient overlay
+**Feature Cards**: White background, rounded-2xl, icon + title + description
+**Project Cards**: Rounded-3xl, image with overlay, client name + arrow
+
+### Phone Mockups
+- Device frame appearance (rounded-3xl with shadow)
+- Slight rotation/tilt effect
+- Floating animation
+- Multiple overlapping for visual interest
 
 ### Icons
-**Library**: Lucide React (Menu, X, ArrowRight, Send, social icons, service icons)
-**Sizing**: 20-28px for standard, larger for hero elements
-**Containers**: Rounded squares/circles with background treatment
-
-### Forms
-- Rounded-xl inputs with border states
-- Focus: border-social-blue with ring-2
-- Labels: Bold, small, text-gray-700
-- Spacing: space-y-2 for field groups, space-y-6 for form
-
-## Footer
-**Multi-column grid** (md:grid-cols-4):
-- Column 1: Logo + tagline
-- Columns 2-3: Navigation links
-- Column 4: Social icons + contact email
-- Bottom bar: Copyright + policy links
-
-## Images
-
-### Hero Section
-**Mockup Device Image**: Large phone/screen visualization showing social media platforms (Instagram, TikTok cards with metrics)
-- Position: Right column of hero grid
-- Treatment: 3D perspective with rotation effect
-- Interior: Gradient background with platform cards in grid
-
-### Portfolio Items
-**6 Portfolio Images** (via Unsplash):
-1. Food photography - restaurant/cooking scene
-2. Fashion product - clothing/accessories
-3. Tech workspace - computers/office
-4. Beauty products - cosmetics still life
-5. Fitness/sport - athletic imagery
-6. Interior design - modern space
-
-All images: Aspect-[4/3], object-cover, scale on hover
-
-### Client Logos
-**Infinite ticker**: Text-based logo placeholders in white/10 containers
-- Treatment: Grayscale, opacity-50, hover reveals full color
+- Lucide React for UI icons
+- React Icons (si) for social media logos
 
 ## Animations
-**Minimal, Purposeful**:
-- Float animation on hero mockup (6s ease-in-out infinite)
-- Infinite scroll for client ticker (40s linear)
-- Hover transforms on cards (scale-110 on images, translate-y on overlays)
-- Navbar backdrop blur on scroll
-- NO excessive animations - focus on smooth transitions
+**Subtle and purposeful**:
+- Float animation on phone mockups
+- Smooth hover transitions
+- Client logo infinite scroll
+- NO excessive animations
 
-## Accessibility
-- Semantic HTML structure
-- Focus states on all interactive elements
-- Alt text for images
-- Proper heading hierarchy
-- Consistent form labeling
+## Key Differences from Previous Design
+1. Orange hero instead of gradient blue
+2. Phone mockups as main visual element
+3. Service tabs instead of card grid
+4. Stats section with large numbers
+5. More compact, information-dense layout
+6. Italian local focus (Pisa e provincia)
+7. NO website development services
+8. NO testimonials/reviews section
