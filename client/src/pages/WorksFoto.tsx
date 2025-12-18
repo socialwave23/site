@@ -44,47 +44,60 @@ import scw03542 from "@assets/SCW03542_1766092496653.jpg";
 import scw03896 from "@assets/SCW03896_1766092496651.jpg";
 import scw08707 from "@assets/SCW08707_1766092496652.jpg";
 
+import scw09734 from "@assets/SCW09734_1766093232591.jpg";
+import scw09846 from "@assets/SCW09846_1766093232592.jpg";
+import scw01649 from "@assets/SCW01649_copia_1766093240163.jpg";
+import massage1 from "@assets/4148C272-5E51-4F45-92D9-499A341AB12A_1766093280520.jpg";
+import scw09299 from "@assets/SCW09299_1766093280521.jpg";
+import tiziana from "@assets/Tiziana_3_1766093280521.jpg";
+
 const photoGallery = [
   { id: 1, image: foto1 },
   { id: 2, image: dsc01147 },
   { id: 3, image: foto6 },
   { id: 4, image: scw03896 },
-  { id: 5, image: dsc09073 },
-  { id: 6, image: foto15 },
-  { id: 7, image: dsc01216 },
-  { id: 8, image: dsc01224 },
-  { id: 9, image: foto18 },
-  { id: 10, image: scw08707 },
-  { id: 11, image: foto25 },
-  { id: 12, image: foto5 },
-  { id: 13, image: dsc08959 },
-  { id: 14, image: foto27 },
-  { id: 15, image: foto32 },
-  { id: 16, image: foto13 },
-  { id: 17, image: foto4 },
-  { id: 18, image: foto8 },
-  { id: 19, image: foto2 },
-  { id: 20, image: foto10 },
-  { id: 21, image: foto14 },
-  { id: 22, image: foto21 },
-  { id: 23, image: foto22 },
-  { id: 24, image: foto23 },
-  { id: 25, image: foto24 },
-  { id: 26, image: foto26 },
-  { id: 27, image: foto28 },
-  { id: 28, image: scw01423 },
-  { id: 29, image: scw01425 },
-  { id: 30, image: scw01836 },
-  { id: 31, image: scw03269 },
-  { id: 32, image: scw03300 },
-  { id: 33, image: scw08138 },
-  { id: 34, image: scw08342 },
-  { id: 35, image: dsc01104 },
-  { id: 36, image: dsc01808 },
-  { id: 37, image: scw01765 },
-  { id: 38, image: scw03205 },
-  { id: 39, image: scw03291 },
-  { id: 40, image: scw03542 },
+  { id: 5, image: scw09734 },
+  { id: 6, image: dsc09073 },
+  { id: 7, image: foto15 },
+  { id: 8, image: scw09846 },
+  { id: 9, image: dsc01216 },
+  { id: 10, image: dsc01224 },
+  { id: 11, image: scw01649 },
+  { id: 12, image: foto18 },
+  { id: 13, image: scw08707 },
+  { id: 14, image: massage1 },
+  { id: 15, image: foto25 },
+  { id: 16, image: foto5 },
+  { id: 17, image: scw09299 },
+  { id: 18, image: dsc08959 },
+  { id: 19, image: foto27 },
+  { id: 20, image: tiziana },
+  { id: 21, image: foto32 },
+  { id: 22, image: foto13 },
+  { id: 23, image: foto4 },
+  { id: 24, image: foto8 },
+  { id: 25, image: foto2 },
+  { id: 26, image: foto10 },
+  { id: 27, image: foto14 },
+  { id: 28, image: foto21 },
+  { id: 29, image: foto22 },
+  { id: 30, image: foto23 },
+  { id: 31, image: foto24 },
+  { id: 32, image: foto26 },
+  { id: 33, image: foto28 },
+  { id: 34, image: scw01423 },
+  { id: 35, image: scw01425 },
+  { id: 36, image: scw01836 },
+  { id: 37, image: scw03269 },
+  { id: 38, image: scw03300 },
+  { id: 39, image: scw08138 },
+  { id: 40, image: scw08342 },
+  { id: 41, image: dsc01104 },
+  { id: 42, image: dsc01808 },
+  { id: 43, image: scw01765 },
+  { id: 44, image: scw03205 },
+  { id: 45, image: scw03291 },
+  { id: 46, image: scw03542 },
 ];
 
 export default function WorksFoto() {
@@ -129,31 +142,25 @@ export default function WorksFoto() {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {photoGallery.map((photo, idx) => {
-              const isLarge = idx === 0 || idx === 7 || idx === 15 || idx === 24 || idx === 32;
-              const isMedium = idx === 3 || idx === 11 || idx === 19 || idx === 28 || idx === 36;
-              return (
-                <div 
-                  key={photo.id} 
-                  className={`group relative overflow-hidden rounded-xl cursor-pointer ${
-                    isLarge ? 'col-span-2 row-span-2' : isMedium ? 'col-span-2' : ''
-                  } animate-fade-in`}
-                  style={{ 
-                    animationDelay: `${idx * 30}ms`,
-                    animationFillMode: 'backwards'
-                  }}
-                  data-testid={`photo-item-${photo.id}`}
-                >
-                  <img 
-                    src={photo.image} 
-                    alt={`Portfolio photo ${photo.id}`}
-                    className={`w-full h-full object-cover ${isLarge ? 'aspect-square' : 'aspect-square'} transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                  <div className="absolute inset-0 border-2 border-[#233DFF] opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
-                </div>
-              );
-            })}
+            {photoGallery.map((photo, idx) => (
+              <div 
+                key={photo.id} 
+                className="group relative overflow-hidden rounded-xl cursor-pointer aspect-square animate-fade-in"
+                style={{ 
+                  animationDelay: `${idx * 30}ms`,
+                  animationFillMode: 'backwards'
+                }}
+                data-testid={`photo-item-${photo.id}`}
+              >
+                <img 
+                  src={photo.image} 
+                  alt={`Portfolio photo ${photo.id}`}
+                  className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-0 border-2 border-[#233DFF] opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

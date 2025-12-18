@@ -103,7 +103,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg text-gray-900">Telefono</h3>
-                    <a href="tel:+393457868504" className="text-gray-600 hover:text-[#233DFF] transition-colors" data-testid="contact-phone">345 786 8504</a>
+                    <a href="tel:+393497868504" className="text-gray-600 hover:text-[#233DFF] transition-colors" data-testid="contact-phone">349 786 8504</a>
                   </div>
                 </div>
 
