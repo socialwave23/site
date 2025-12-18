@@ -35,28 +35,10 @@ const stats = [
   { value: '98%', label: 'Clienti soddisfatti', icon: Users },
 ];
 
-const services = [
-  {
-    id: 'social',
-    title: 'Social Media',
-    icon: Share2,
-    description: 'Gestione completa dei tuoi canali social: Instagram, TikTok, Facebook. Pianificazione contenuti, pubblicazione e monitoraggio.',
-    features: ['Strategia editoriale', 'Pianificazione contenuti', 'Community management', 'Report mensili'],
-  },
-  {
-    id: 'video',
-    title: 'Foto e Video',
-    icon: Camera,
-    description: 'Produciamo contenuti foto e video professionali ottimizzati per i social. Reel, TikTok, Stories e feed.',
-    features: ['Shooting professionali', 'Montaggio video', 'Reels & TikTok', 'Post-produzione'],
-  },
-  {
-    id: 'design',
-    title: 'Grafica e Branding',
-    icon: Palette,
-    description: 'Identità visiva che ti distingue. Loghi, grafiche social, materiali stampati e coordinato immagine.',
-    features: ['Logo design', 'Grafiche social', 'Materiali stampa', 'Brand identity'],
-  },
+const serviceCategories = [
+  { id: 'social', label: 'Social Media', icon: Share2, active: true },
+  { id: 'photo', label: 'Foto e Video', icon: Camera, active: false },
+  { id: 'design', label: 'Grafica', icon: Palette, active: false },
 ];
 
 const features = [
@@ -164,23 +146,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-8 bg-white border-b border-gray-100" data-testid="service-tabs-section">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {services.map((service) => (
-              <div 
-                key={service.id}
-                className="flex items-center gap-2 px-6 py-3 rounded-full bg-gray-100 text-gray-700 font-semibold text-sm cursor-default hover:bg-[#CAE8FF] hover:text-[#233DFF] transition-colors"
-                data-testid={`service-tab-${service.id}`}
-              >
-                <service.icon size={18} />
-                {service.title}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 bg-gray-50 overflow-hidden" data-testid="clients-section">
         <div className="container mx-auto px-4 mb-8">
           <h2 className="text-center text-2xl font-bold text-gray-800">Credono in noi</h2>
@@ -203,7 +168,88 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-white" data-testid="stats-section">
+      <section className="py-20 bg-white" data-testid="what-we-do-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Servizi</p>
+            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 italic">
+              Cosa facciamo
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Aiutiamo aziende di <strong>Pisa e provincia</strong> a ottenere risultati concreti sui <strong>Social Media</strong>. 
+              Dalla gestione professionale dei contenuti alla creazione di <strong>foto e video ottimizzati</strong>, 
+              studiamo strategie personalizzate per migliorare la tua visibilità e attrarre clienti.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-20">
+            {serviceCategories.map((service) => (
+              <Link key={service.id} href="/portfolio" onClick={handleScrollTop}>
+                <Button
+                  variant={service.active ? 'default' : 'outline'}
+                  className={`rounded-full px-6 py-3 font-semibold flex items-center gap-2 ${
+                    service.active
+                      ? 'bg-slate-900 text-white hover:bg-slate-800'
+                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300'
+                  }`}
+                  data-testid={`service-category-${service.id}`}
+                >
+                  {service.label}
+                  <service.icon size={18} />
+                </Button>
+              </Link>
+            ))}
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                Dai una marcia in più ai tuoi<br />
+                <span className="text-[#233DFF]">SOCIAL!</span>
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Ci occupiamo di tutto: dalla <strong>creazione di contenuti originali</strong> (foto, video, grafiche) alla <strong>gestione completa</strong> dei tuoi profili social. Pianifichiamo, pubblichiamo e interagiamo con la tua <strong>community</strong> per far crescere la tua <strong>presenza online</strong>. Meno stress per te, più <strong>engagement</strong> per il tuo brand!
+              </p>
+              <Link href="/works" onClick={handleScrollTop}>
+                <span className="inline-flex items-center gap-2 text-gray-900 font-bold text-lg cursor-pointer hover:text-[#233DFF] transition-colors">
+                  Scopri SOCIAL MEDIA
+                  <span className="text-[#233DFF]">&#8226;</span>
+                </span>
+              </Link>
+            </div>
+
+            <div className="relative flex justify-center">
+              <div className="relative">
+                <div className="absolute -left-12 top-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform -rotate-12 overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-purple-600 via-pink-500 to-rose-400 flex items-center justify-center">
+                    <SiInstagram size={40} className="text-white" />
+                  </div>
+                </div>
+                <div className="relative w-56 h-[400px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
+                  <img 
+                    src={heroPhoto} 
+                    alt="Social media content" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4 right-4">
+                    <div className="bg-black/50 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-white/20"></div>
+                      <span className="text-white text-xs font-medium">@iporcicomodipisa</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
+                  <div className="w-full h-full bg-black flex items-center justify-center">
+                    <SiTiktok size={40} className="text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-50" data-testid="stats-section">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -217,46 +263,6 @@ export default function Home() {
                 </div>
                 <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{stat.value}</div>
                 <p className="text-gray-600 text-sm md:text-base">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-[#233DFF] relative overflow-hidden" data-testid="services-section">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute right-0 top-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute left-0 bottom-0 w-96 h-96 bg-blue-800 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">I nostri servizi</h2>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              Tutto quello che serve per far brillare il tuo locale sui social media
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div 
-                key={service.id}
-                className="bg-white rounded-3xl p-8 shadow-xl"
-                data-testid={`service-card-${service.id}`}
-              >
-                <div className="w-14 h-14 bg-[#CAE8FF] rounded-2xl flex items-center justify-center text-[#233DFF] mb-6">
-                  <service.icon size={28} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-700 text-sm">
-                      <div className="w-1.5 h-1.5 bg-[#233DFF] rounded-full"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>

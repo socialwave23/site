@@ -1,7 +1,12 @@
 import { Link } from 'wouter';
-import { Play, Eye, Heart, Share2, ArrowRight } from 'lucide-react';
+import { Play, Eye, Heart, Share2, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
+
+import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
+import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
+import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
+import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
 
 interface VideoWork {
   id: string;
@@ -17,6 +22,23 @@ interface VideoWork {
   };
   description: string;
 }
+
+interface PortfolioProject {
+  id: string;
+  name: string;
+  category: string;
+  image: string;
+  logo?: string;
+  size: 'small' | 'medium' | 'large';
+}
+
+const portfolioProjects: PortfolioProject[] = [
+  { id: '1', name: 'I Porci Comodi', category: 'FOOD & BEVERAGE', image: heroPhoto, logo: logoPorciComodi, size: 'large' },
+  { id: '2', name: 'La Panacea', category: 'BAR & COCKTAILS', image: heroPhoto, logo: logoPanacea, size: 'medium' },
+  { id: '3', name: 'Eleven Cafe', category: 'RISTORAZIONE', image: heroPhoto, logo: logoEleven, size: 'medium' },
+  { id: '4', name: 'Ristorante Locale', category: 'FOOD & BEVERAGE', image: heroPhoto, size: 'small' },
+  { id: '5', name: 'Pub Irlandese', category: 'EVENTI', image: heroPhoto, size: 'small' },
+];
 
 const works: VideoWork[] = [
   {
@@ -97,6 +119,38 @@ function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
       />
+    </div>
+  );
+}
+
+function PhoneMockup({ project, className = '' }: { project: PortfolioProject; className?: string }) {
+  const sizeClasses = {
+    small: 'w-40 h-64',
+    medium: 'w-48 h-80',
+    large: 'w-56 h-96',
+  };
+
+  return (
+    <div className={`relative ${sizeClasses[project.size]} ${className}`}>
+      <div className="absolute inset-0 bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden border-4 border-slate-800">
+        <img 
+          src={project.image} 
+          alt={project.name}
+          className="w-full h-full object-cover"
+        />
+        {project.logo && (
+          <div className="absolute top-4 left-4 right-4">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 flex items-center justify-center">
+              <img src={project.logo} alt={project.name} className="h-8 object-contain" />
+            </div>
+          </div>
+        )}
+        <div className="absolute bottom-4 left-4 right-4">
+          <div className="bg-[#233DFF] text-white text-xs font-bold px-3 py-2 rounded-full text-center uppercase tracking-wider">
+            {project.category}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -192,37 +246,64 @@ export default function Works() {
 
   return (
     <div className="flex flex-col bg-gray-50">
-      <section className="relative pt-32 pb-16 bg-[#233DFF] overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
-          <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
-              <Play className="w-4 h-4" />
-              I Nostri Lavori
-            </div>
-
+      <section className="relative pt-32 pb-16 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Progetti</p>
+            
             <h1
-              className="text-5xl md:text-6xl font-black text-white mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 italic"
               data-testid="works-page-title"
             >
-              <span className="italic">Contenuti che</span><br />
-              <span className="text-[#CAE8FF]">spaccano</span>
+              PORTFOLIO:<br />
+              <span className="not-italic">Social Media per</span><br />
+              <span className="not-italic">aziende locali</span>
             </h1>
 
-            <p className="text-xl text-white/90 leading-relaxed max-w-xl mx-auto">
-              Video virali, reel coinvolgenti e contenuti che fanno crescere i brand.
-              Guarda i nostri migliori lavori in azione.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Ecco alcuni dei progetti che abbiamo seguito: dalla gestione Social Network passando per la 
+              realizzazione di contenuti virali che generano engagement e conversioni.
             </p>
+          </div>
+
+          <div className="relative h-[500px] flex items-center justify-center mb-8">
+            <div className="flex items-end justify-center gap-4">
+              <PhoneMockup 
+                project={portfolioProjects[3]} 
+                className="transform -rotate-12 translate-y-8 opacity-80 hidden md:block" 
+              />
+              <PhoneMockup 
+                project={portfolioProjects[1]} 
+                className="transform -rotate-6 translate-y-4 z-10" 
+              />
+              <PhoneMockup 
+                project={portfolioProjects[0]} 
+                className="z-20" 
+              />
+              <PhoneMockup 
+                project={portfolioProjects[2]} 
+                className="transform rotate-6 translate-y-4 z-10" 
+              />
+              <PhoneMockup 
+                project={portfolioProjects[4]} 
+                className="transform rotate-12 translate-y-8 opacity-80 hidden md:block" 
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16" data-testid="works-grid-section">
+      <section className="py-16 bg-gray-50" data-testid="works-grid-section">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Contenuti <span className="text-[#233DFF]">in azione</span>
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Guarda i nostri video più performanti su TikTok e Instagram
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {works.map((work) => (
               <VideoCard key={work.id} work={work} />
