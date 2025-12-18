@@ -66,11 +66,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative min-h-screen bg-[#233DFF] pt-24 pb-16 overflow-hidden" data-testid="hero-section">
+      <section className="relative min-h-screen bg-[#050A30] pt-24 pb-16 overflow-hidden" data-testid="hero-section">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4 animate-pulse-slow"></div>
-          <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute left-1/2 top-1/2 w-1/4 h-1/4 bg-white rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute right-1/4 bottom-1/4 w-64 h-64 bg-[#233DFF]/50 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
         
         <div className="container mx-auto px-4 z-10 relative">
@@ -302,10 +302,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-900 relative overflow-hidden" data-testid="cta-section">
+      <section className="py-20 bg-[#050A30] relative overflow-hidden" data-testid="cta-section">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl"></div>
-          <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl"></div>
+          <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
