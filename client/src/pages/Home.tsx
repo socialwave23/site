@@ -15,6 +15,13 @@ import logoOstellino from "@assets/Logo_Ostellino_1765228708352.png";
 import logoWeLovePasta from "@assets/Logo_WeLovePasta_1765228725933.png";
 import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
 
+import backstage1 from "@assets/IMG_0663_1766094261378.jpeg";
+import backstage2 from "@assets/IMG_2496_1766094261378.jpeg";
+import backstage3 from "@assets/IMG_3710_1766094261378.jpeg";
+import backstage4 from "@assets/IMG_1860_1766094261378.jpeg";
+import backstage5 from "@assets/SCW02026_1766094261379.jpg";
+import backstage6 from "@assets/PHOTO-2024-01-04-18-49-54_1766094261379.jpg";
+
 const clientLogos = [
   { id: 1, name: 'Amaro', logo: logoAmaro },
   { id: 2, name: 'Aurelia Car', logo: logoAureliaCar },
@@ -279,13 +286,45 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CAE8FF] to-[#233DFF]/20 rounded-3xl transform rotate-6"></div>
                 <div className="absolute inset-0 bg-white rounded-3xl shadow-xl overflow-hidden">
                   <img 
-                    src={heroPhoto} 
+                    src={backstage4} 
                     alt="Team at work" 
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-100" data-testid="backstage-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Dietro le quinte</p>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 italic">
+              Come lavoriamo
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Attrezzatura professionale, passione e creatività. Ogni scatto e ogni video sono curati nei minimi dettagli.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {[backstage1, backstage2, backstage3, backstage4, backstage5, backstage6].map((img, idx) => (
+              <div 
+                key={idx}
+                className="relative overflow-hidden rounded-2xl aspect-square group animate-fade-in"
+                style={{ animationDelay: `${idx * 100}ms` }}
+                data-testid={`backstage-${idx}`}
+              >
+                <img 
+                  src={img} 
+                  alt={`Backstage ${idx + 1}`}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -51,6 +51,11 @@ import massage1 from "@assets/4148C272-5E51-4F45-92D9-499A341AB12A_1766093280520
 import scw09299 from "@assets/SCW09299_1766093280521.jpg";
 import tiziana from "@assets/Tiziana_3_1766093280521.jpg";
 
+import backstageFoto1 from "@assets/IMG_0663_1766094261378.jpeg";
+import backstageFoto2 from "@assets/IMG_3710_1766094261378.jpeg";
+import backstageFoto3 from "@assets/IMG_2032_1766094261379.jpeg";
+import backstageFoto4 from "@assets/IMG_1860_1766094261378.jpeg";
+
 const photoGallery = [
   { id: 1, image: foto1 },
   { id: 2, image: dsc01147 },
@@ -159,6 +164,38 @@ export default function WorksFoto() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="absolute inset-0 border-2 border-[#233DFF] opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white" data-testid="foto-backstage-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Dietro le quinte</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 italic">
+              Il nostro studio
+            </h2>
+            <p className="text-lg text-gray-600">
+              Luci professionali, set curati e attenzione ai dettagli per ogni scatto perfetto.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {[backstageFoto1, backstageFoto2, backstageFoto3, backstageFoto4].map((img, idx) => (
+              <div 
+                key={idx}
+                className="relative overflow-hidden rounded-2xl aspect-[3/4] group animate-fade-in"
+                style={{ animationDelay: `${idx * 100}ms` }}
+                data-testid={`foto-backstage-${idx}`}
+              >
+                <img 
+                  src={img} 
+                  alt={`Photo backstage ${idx + 1}`}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               </div>
             ))}
           </div>

@@ -7,6 +7,13 @@ import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
 import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
 import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
 
+import backstageVideo1 from "@assets/IMG_8661_1766094261378.jpeg";
+import backstageVideo2 from "@assets/SCW06654_1766094261378.jpg";
+import backstageVideo3 from "@assets/SCW08763_1766094261378.jpg";
+import backstageVideo4 from "@assets/SCW08443_1766094261379.jpg";
+import backstageVideo5 from "@assets/SCW03959_1766094261379.jpg";
+import backstageVideo6 from "@assets/DSC08679_1766094261379.jpg";
+
 const videoProjects = [
   { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+', logo: logoPorciComodi, description: 'Video virali che hanno portato il locale ad avere una coda fuori dalla porta' },
   { id: 2, title: 'Cocktail Experience', client: 'La Panacea', platform: 'Instagram', views: '45K+', logo: logoPanacea, description: 'Contenuti creativi che mostrano la preparazione dei cocktail signature' },
@@ -91,6 +98,38 @@ export default function WorksVideo() {
                   <p className="text-gray-500 text-sm mb-3">{video.client}</p>
                   <p className="text-gray-600 text-sm">{video.description}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white" data-testid="video-backstage-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Dietro le quinte</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 italic">
+              Il nostro set
+            </h2>
+            <p className="text-lg text-gray-600">
+              Attrezzatura professionale, location uniche e passione per ogni ripresa.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {[backstageVideo1, backstageVideo2, backstageVideo3, backstageVideo4, backstageVideo5, backstageVideo6].map((img, idx) => (
+              <div 
+                key={idx}
+                className="relative overflow-hidden rounded-2xl aspect-[3/4] group animate-fade-in"
+                style={{ animationDelay: `${idx * 100}ms` }}
+                data-testid={`video-backstage-${idx}`}
+              >
+                <img 
+                  src={img} 
+                  alt={`Video backstage ${idx + 1}`}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A30]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               </div>
             ))}
           </div>
