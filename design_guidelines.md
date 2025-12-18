@@ -6,9 +6,10 @@
 ## Brand Colors
 **Primary Blue**: #233DFF (bright blue) - Hero backgrounds, CTAs, primary buttons
 **Light Blue**: #CAE8FF (sky blue) - Accents, highlights, icon backgrounds, secondary elements
+**Dark Navy**: #050A30 (very dark navy) - Logo text, footer, dark sections
 
 **Neutrals**:
-- Dark navy (slate-900) for dark sections and footer
+- Dark navy #050A30 for dark sections and footer
 - White (#ffffff) for main backgrounds
 - Light gray (#f8fafc / gray-50) for subtle section backgrounds
 - Gray-600 for body text, Gray-400 for secondary text

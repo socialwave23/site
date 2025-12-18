@@ -1,11 +1,11 @@
-import logoImage from "@assets/Logo_SocialWave_(sfondo_bianco)_1765061020809.png";
+import logoImage from "@assets/Logo_SocialWave_senza_sfondo_1766091719663.png";
 
 interface LogoProps {
   className?: string;
   variant?: 'light' | 'dark';
 }
 
-export function Logo({ className = "h-18", variant = 'dark' }: LogoProps) {
+export function Logo({ className = "h-10", variant = 'dark' }: LogoProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`} data-testid="logo">
       <img 
@@ -13,8 +13,8 @@ export function Logo({ className = "h-18", variant = 'dark' }: LogoProps) {
         alt="SocialWave Logo" 
         className="h-full w-auto object-contain"
       />
-      <span className={`font-bold text-xl tracking-tight ${variant === 'dark' ? 'text-social-dark' : 'text-white'}`}>
-        Social<span className="text-social-blue">Wave</span>
+      <span className={`font-bold text-xl tracking-tight ${variant === 'dark' ? 'text-[#050A30]' : 'text-white'}`}>
+        Social<span className="text-[#233DFF]">Wave</span>
       </span>
     </div>
   );
