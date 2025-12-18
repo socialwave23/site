@@ -221,12 +221,6 @@ export default function Home() {
                     alt="Social media content" 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 left-4 right-4">
-                    <div className="bg-black/50 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-white/20"></div>
-                      <span className="text-white text-xs font-medium">@iporcicomodipisa</span>
-                    </div>
-                  </div>
                 </div>
                 <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
                   <div className="w-full h-full bg-black flex items-center justify-center">
