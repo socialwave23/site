@@ -118,12 +118,6 @@ export default function Home() {
                     alt="Social media content creation" 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <div className="flex items-center gap-2 text-white">
-                      <SiInstagram size={20} />
-                      <span className="text-sm font-medium">@iporcicomodipisa</span>
-                    </div>
-                  </div>
                 </div>
                 <div className="absolute -right-6 bottom-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-[#CAE8FF] to-[#233DFF] flex items-center justify-center">
