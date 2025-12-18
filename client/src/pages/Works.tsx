@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { Play, Eye, Heart, Share2, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 
@@ -7,21 +7,6 @@ import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
 import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
 import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
 import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
-
-interface VideoWork {
-  id: string;
-  title: string;
-  client: string;
-  platform: 'tiktok' | 'instagram';
-  videoId: string;
-  originalUrl: string;
-  stats: {
-    views: string;
-    likes: string;
-    shares: string;
-  };
-  description: string;
-}
 
 interface PortfolioProject {
   id: string;
@@ -40,88 +25,26 @@ const portfolioProjects: PortfolioProject[] = [
   { id: '5', name: 'Pub Irlandese', category: 'EVENTI', image: heroPhoto, size: 'small' },
 ];
 
-const works: VideoWork[] = [
-  {
-    id: '1',
-    title: 'Viral Food Content',
-    client: 'I Porci Comodi',
-    platform: 'tiktok',
-    videoId: '7510405219461879073',
-    originalUrl: 'https://vm.tiktok.com/ZNRLf142W/',
-    stats: {
-      views: '150K+',
-      likes: '12K',
-      shares: '890',
-    },
-    description: 'Contenuto virale che ha portato migliaia di nuovi follower al ristorante.',
-  },
-  {
-    id: '2',
-    title: 'Reel Coinvolgente',
-    client: 'La Panacea',
-    platform: 'instagram',
-    videoId: 'DE4zY-Ei2MW',
-    originalUrl: 'https://www.instagram.com/reel/DE4zY-Ei2MW/',
-    stats: {
-      views: '45K+',
-      likes: '3.2K',
-      shares: '420',
-    },
-    description: 'Storytelling visivo che cattura l\'essenza del brand.',
-  },
-  {
-    id: '3',
-    title: 'Cocktail Experience',
-    client: 'La Panacea',
-    platform: 'instagram',
-    videoId: 'DN7cquDDKm_',
-    originalUrl: 'https://www.instagram.com/reel/DN7cquDDKm_/',
-    stats: {
-      views: '28K+',
-      likes: '2.1K',
-      shares: '315',
-    },
-    description: 'Un viaggio sensoriale nel mondo dei cocktail artigianali.',
-  },
+const photoGallery = [
+  { id: 1, image: heroPhoto, title: 'Food Photography' },
+  { id: 2, image: heroPhoto, title: 'Interior Design' },
+  { id: 3, image: heroPhoto, title: 'Product Shots' },
+  { id: 4, image: heroPhoto, title: 'Event Coverage' },
+  { id: 5, image: heroPhoto, title: 'Brand Identity' },
+  { id: 6, image: heroPhoto, title: 'Lifestyle' },
 ];
 
-function TikTokEmbed({ videoId, testId }: { videoId: string; testId: string }) {
-  return (
-    <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
-      <iframe
-        src={`https://www.tiktok.com/embed/v2/${videoId}`}
-        style={{ 
-          width: '100%',
-          height: '100%',
-          minHeight: '500px',
-          border: 'none',
-        }}
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-      />
-    </div>
-  );
-}
+const videoProjects = [
+  { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+' },
+  { id: 2, title: 'Cocktail Experience', client: 'La Panacea', platform: 'Instagram', views: '45K+' },
+  { id: 3, title: 'Event Highlight', client: 'Eleven Cafe', platform: 'TikTok', views: '80K+' },
+];
 
-function InstagramEmbed({ videoId, testId }: { videoId: string; testId: string }) {
-  return (
-    <div className="w-full h-full flex justify-center items-center" data-testid={testId}>
-      <iframe
-        src={`https://www.instagram.com/reel/${videoId}/embed/`}
-        style={{ 
-          width: '100%',
-          height: '100%',
-          minHeight: '500px',
-          border: 'none',
-        }}
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-      />
-    </div>
-  );
-}
+const managedProfiles = [
+  { id: 1, name: 'I Porci Comodi', handle: '@iporcicomodipisa', logo: logoPorciComodi, followers: '12.5K', platform: 'instagram' },
+  { id: 2, name: 'La Panacea', handle: '@lapanaceapisa', logo: logoPanacea, followers: '8.2K', platform: 'instagram' },
+  { id: 3, name: 'Eleven Cafe', handle: '@elevencafepisa', logo: logoEleven, followers: '5.8K', platform: 'tiktok' },
+];
 
 function PhoneMockup({ project, className = '' }: { project: PortfolioProject; className?: string }) {
   const sizeClasses = {
@@ -155,90 +78,6 @@ function PhoneMockup({ project, className = '' }: { project: PortfolioProject; c
   );
 }
 
-function VideoCard({ work }: { work: VideoWork }) {
-  const platformConfig = {
-    tiktok: {
-      icon: SiTiktok,
-      bgColor: 'bg-black',
-      label: 'TikTok',
-    },
-    instagram: {
-      icon: SiInstagram,
-      bgColor: 'bg-gradient-to-r from-purple-600 via-pink-500 to-rose-400',
-      label: 'Instagram',
-    },
-  };
-
-  const config = platformConfig[work.platform];
-  const PlatformIcon = config.icon;
-
-  return (
-    <div
-      className="group bg-white rounded-3xl shadow-lg overflow-hidden"
-      data-testid={`video-card-${work.id}`}
-    >
-      <div className="p-4 pt-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${config.bgColor} text-white text-sm font-semibold`}>
-            <PlatformIcon className="w-4 h-4" />
-            {config.label}
-          </div>
-          <a
-            href={work.originalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-[#233DFF] text-white shadow-lg transition-transform hover:scale-110"
-            data-testid={`video-link-${work.id}`}
-          >
-            <Play className="w-4 h-4 ml-0.5" />
-          </a>
-        </div>
-
-        <div className="relative min-h-[500px] flex items-center justify-center bg-gray-50 rounded-2xl overflow-hidden">
-          {work.platform === 'tiktok' ? (
-            <TikTokEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
-          ) : (
-            <InstagramEmbed videoId={work.videoId} testId={`video-embed-${work.id}`} />
-          )}
-        </div>
-      </div>
-
-      <div className="p-6 pt-4">
-        <div className="mb-4">
-          <h3 className="text-xl font-bold text-gray-900 mb-1">
-            {work.title}
-          </h3>
-          <p className="text-sm text-gray-500">
-            {work.client}
-          </p>
-        </div>
-
-        <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-          {work.description}
-        </p>
-
-        <div className="grid grid-cols-3 gap-3">
-          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
-            <Eye className="w-4 h-4 mb-1 text-[#233DFF]" />
-            <span className="text-lg font-bold text-gray-900">{work.stats.views}</span>
-            <span className="text-xs text-gray-500">Views</span>
-          </div>
-          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
-            <Heart className="w-4 h-4 mb-1 text-red-500" />
-            <span className="text-lg font-bold text-gray-900">{work.stats.likes}</span>
-            <span className="text-xs text-gray-500">Likes</span>
-          </div>
-          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-50">
-            <Share2 className="w-4 h-4 mb-1 text-green-500" />
-            <span className="text-lg font-bold text-gray-900">{work.stats.shares}</span>
-            <span className="text-xs text-gray-500">Shares</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Works() {
   const handleScrollTop = () => {
     window.scrollTo(0, 0);
@@ -249,20 +88,18 @@ export default function Works() {
       <section className="relative pt-32 pb-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4">Progetti</p>
+            <p className="text-[#233DFF] font-semibold text-sm uppercase tracking-wider mb-4 animate-fade-in">Progetti</p>
             
             <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 italic"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 italic animate-slide-up"
               data-testid="works-page-title"
             >
-              PORTFOLIO:<br />
-              <span className="not-italic">Social Media per</span><br />
-              <span className="not-italic">aziende locali</span>
+              I nostri<br />
+              <span className="text-[#233DFF]">lavori</span>
             </h1>
 
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ecco alcuni dei progetti che abbiamo seguito: dalla gestione Social Network passando per la 
-              realizzazione di contenuti virali che generano engagement e conversioni.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              Foto professionali, video virali e profili social gestiti con passione per le aziende di Pisa e provincia.
             </p>
           </div>
 
@@ -270,50 +107,143 @@ export default function Works() {
             <div className="flex items-end justify-center gap-4">
               <PhoneMockup 
                 project={portfolioProjects[3]} 
-                className="transform -rotate-12 translate-y-8 opacity-80 hidden md:block" 
+                className="transform -rotate-12 translate-y-8 opacity-80 hidden md:block animate-float-slow" 
               />
               <PhoneMockup 
                 project={portfolioProjects[1]} 
-                className="transform -rotate-6 translate-y-4 z-10" 
+                className="transform -rotate-6 translate-y-4 z-10 animate-float" 
               />
               <PhoneMockup 
                 project={portfolioProjects[0]} 
-                className="z-20" 
+                className="z-20 animate-float-slow" 
               />
               <PhoneMockup 
                 project={portfolioProjects[2]} 
-                className="transform rotate-6 translate-y-4 z-10" 
+                className="transform rotate-6 translate-y-4 z-10 animate-float" 
               />
               <PhoneMockup 
                 project={portfolioProjects[4]} 
-                className="transform rotate-12 translate-y-8 opacity-80 hidden md:block" 
+                className="transform rotate-12 translate-y-8 opacity-80 hidden md:block animate-float-slow" 
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50" data-testid="works-grid-section">
+      <section className="py-20 bg-white" data-testid="photo-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Contenuti <span className="text-[#233DFF]">in azione</span>
+            <span className="text-5xl mb-4 block">📸</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Foto
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto">
-              Guarda i nostri video più performanti su TikTok e Instagram
+              Scatti professionali che catturano l'essenza del tuo brand
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {works.map((work) => (
-              <VideoCard key={work.id} work={work} />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {photoGallery.map((photo, idx) => (
+              <div 
+                key={photo.id} 
+                className={`group relative overflow-hidden rounded-2xl ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <img 
+                  src={photo.image} 
+                  alt={photo.title}
+                  className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4">
+                    <span className="text-white font-bold">{photo.title}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-gray-50" data-testid="video-section">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-5xl mb-4 block">🎬</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Video
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Contenuti video che generano engagement e viralità
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {videoProjects.map((video) => (
+              <div 
+                key={video.id}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                    video.platform === 'TikTok' ? 'bg-black text-white' : 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
+                  }`}>
+                    {video.platform === 'TikTok' ? <SiTiktok className="inline mr-1" size={14} /> : <SiInstagram className="inline mr-1" size={14} />}
+                    {video.platform}
+                  </span>
+                  <span className="text-[#233DFF] font-bold">{video.views}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{video.title}</h3>
+                <p className="text-gray-500">{video.client}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white" data-testid="profiles-section">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-5xl mb-4 block">📱</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Profili Social gestiti
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Account che gestiamo quotidianamente con strategia e creatività
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {managedProfiles.map((profile) => (
+              <div 
+                key={profile.id}
+                className="bg-gray-50 rounded-2xl p-6 hover:bg-[#CAE8FF]/20 transition-all duration-300 border border-gray-100 hover:border-[#233DFF]/30"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden bg-white p-2 shadow-sm">
+                    <img src={profile.logo} alt={profile.name} className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">{profile.name}</h3>
+                    <p className="text-sm text-gray-500">{profile.handle}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-black text-[#233DFF]">{profile.followers}</span>
+                  <span className="text-sm text-gray-500">followers</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Vuoi risultati <span className="text-[#CAE8FF]">così</span>?

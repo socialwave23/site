@@ -1,31 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, Phone, ArrowUpRight, Folder, Sparkles, Video, Image, Users, HelpCircle, Star } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
-import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
-
 const navLinks = [
-  { name: 'Home', path: '/' },
   { name: 'Servizi', path: '/portfolio' },
   { name: 'Lavori', path: '/works', hasDropdown: true, dropdownType: 'lavori' },
   { name: 'Risorse', path: '#', hasDropdown: true, dropdownType: 'risorse' },
   { name: 'Contatti', path: '/contact' },
 ];
 
-const projectPreviews = [
-  { name: 'I Porci Comodi', image: logoPorciComodi, path: '/clients' },
-  { name: 'La Panacea', image: logoPanacea, path: '/clients' },
-  { name: 'Eleven Cafe', image: logoEleven, path: '/clients' },
-];
-
 const lavoriCategories = [
-  { name: 'Raccolta video', path: '/works' },
-  { name: 'Reel Instagram', path: '/works' },
-  { name: 'Profili Social Media gestiti', path: '/clients' },
+  { name: 'Foto', emoji: '📸', path: '/works' },
+  { name: 'Video', emoji: '🎬', path: '/works' },
+  { name: 'Profili Social gestiti', emoji: '📱', path: '/clients' },
 ];
 
 const risorseItems = [
@@ -33,84 +22,50 @@ const risorseItems = [
     name: 'Chi siamo', 
     description: 'Scopri chi siamo, la nostra storia e come aiutiamo le aziende a crescere online',
     linkText: 'Leggi di più',
-    icon: Users,
+    emoji: '👋',
     path: '/contact',
-    color: 'bg-[#CAE8FF] text-[#233DFF]'
+  },
+  { 
+    name: 'Brochure', 
+    description: 'Scarica la nostra brochure con tutti i servizi, esempi di lavori e informazioni',
+    linkText: 'Scarica la brochure',
+    emoji: '📋',
+    path: '/portfolio',
   },
   { 
     name: 'Perché noi', 
     description: 'I motivi per cui le aziende ci scelgono ogni mese per comunicazione, marketing e pubblicità',
     linkText: 'Scopri di più',
-    icon: HelpCircle,
+    emoji: '👁️',
     path: '/',
-    color: 'bg-[#CAE8FF] text-[#233DFF]'
   },
   { 
-    name: 'I nostri clienti', 
-    description: 'Guarda i risultati ottenuti dai nostri clienti e le loro storie di successo',
-    linkText: 'Guarda i clienti',
-    icon: Star,
-    path: '/clients',
-    color: 'bg-[#CAE8FF] text-[#233DFF]'
+    name: 'Blog', 
+    description: 'Guide pratiche, consigli di marketing e casi studio reali delle aziende con cui lavoriamo',
+    linkText: 'Guarda gli ultimi articoli',
+    emoji: '📰',
+    path: '/portfolio',
   },
 ];
 
 function LavoriDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute top-full left-0 w-screen bg-white shadow-xl border-t border-gray-100 z-50">
-      <div className="max-w-6xl mx-auto px-8 py-10">
-        <div className="grid grid-cols-12 gap-12">
-          <div className="col-span-3">
-            <div className="flex items-center gap-2 text-[#233DFF] font-bold text-lg mb-6">
-              <Folder size={20} />
-              Raccolte
-            </div>
-            <ul className="space-y-4">
-              {lavoriCategories.map((cat) => (
-                <li key={cat.name}>
-                  <Link href={cat.path} onClick={onClose}>
-                    <span className="text-gray-700 hover:text-[#233DFF] cursor-pointer transition-colors text-base">
-                      {cat.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="col-span-9 border-l border-gray-100 pl-12">
-            <div className="flex items-center gap-2 text-[#233DFF] font-bold text-lg mb-6">
-              <Sparkles size={20} />
-              Progetti completi
-            </div>
-            <div className="grid grid-cols-4 gap-6">
-              {projectPreviews.map((project, idx) => (
-                <Link key={idx} href={project.path} onClick={onClose}>
-                  <div className="group cursor-pointer">
-                    <div className="aspect-[3/4] bg-gray-50 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-6 border border-gray-100 group-hover:border-[#233DFF] transition-colors">
-                      <img 
-                        src={project.image} 
-                        alt={project.name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-sm font-semibold text-gray-900 group-hover:text-[#233DFF] transition-colors">{project.name}</span>
-                      <ArrowUpRight size={16} className="text-gray-400 group-hover:text-[#233DFF] transition-colors flex-shrink-0" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-              <Link href="/works" onClick={onClose}>
-                <div className="aspect-[3/4] bg-slate-800 rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#233DFF] transition-colors group">
-                  <div className="text-center text-white px-4">
-                    <span className="font-semibold text-sm block mb-2">Altri progetti</span>
-                    <ArrowUpRight size={20} className="mx-auto" />
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
+      <div className="max-w-4xl mx-auto px-8 py-8">
+        <div className="grid grid-cols-3 gap-6">
+          {lavoriCategories.map((cat) => (
+            <Link key={cat.name} href={cat.path} onClick={onClose}>
+              <div className="group p-6 rounded-xl border border-gray-100 hover:border-[#233DFF] hover:bg-[#CAE8FF]/10 transition-all cursor-pointer">
+                <div className="text-4xl mb-4">{cat.emoji}</div>
+                <h3 className="font-bold text-xl text-gray-900 group-hover:text-[#233DFF] transition-colors mb-2">
+                  {cat.name}
+                </h3>
+                <span className="text-sm text-gray-500 group-hover:text-[#233DFF] transition-colors">
+                  Scopri di più
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
@@ -120,25 +75,25 @@ function LavoriDropdown({ onClose }: { onClose: () => void }) {
 function RisorseDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute top-full left-0 w-screen bg-white shadow-xl border-t border-gray-100 z-50">
-      <div className="max-w-5xl mx-auto px-8 py-10">
-        <div className="grid grid-cols-3 gap-0 divide-x divide-gray-100">
+      <div className="max-w-6xl mx-auto px-8 py-8">
+        <div className="grid grid-cols-4 gap-0 divide-x divide-gray-200">
           {risorseItems.map((item, idx) => (
             <Link key={idx} href={item.path} onClick={onClose}>
-              <div className="group px-8 py-4 cursor-pointer hover:bg-gray-50 transition-colors h-full">
+              <div className="group px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors h-full">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-bold text-xl text-gray-900">
+                  <h3 className="font-bold text-lg text-gray-900">
                     {item.name}
                   </h3>
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${item.color} flex-shrink-0`}>
-                    <item.icon size={24} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-orange-100 text-2xl flex-shrink-0">
+                    {item.emoji}
                   </div>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">
                   {item.description}
                 </p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-gray-900 group-hover:text-[#233DFF] transition-colors">
                   {item.linkText}
-                  <span className="text-[#233DFF]">&#8226;</span>
+                  <span className="text-[#233DFF]">●</span>
                 </span>
               </div>
             </Link>
@@ -216,7 +171,7 @@ export function Navbar() {
                 {link.hasDropdown ? (
                   <button
                     onClick={() => handleDropdownToggle(link.dropdownType!)}
-                    className={`text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1 px-4 py-2 rounded-full ${
+                    className={`text-sm font-semibold transition-all duration-200 cursor-pointer px-4 py-2 rounded-full ${
                       activeDropdown === link.dropdownType
                         ? 'bg-[#233DFF] text-white'
                         : `${textColor} hover:opacity-80`
@@ -224,14 +179,6 @@ export function Navbar() {
                     data-testid={`nav-link-${link.name.toLowerCase()}`}
                   >
                     {link.name}
-                    <svg 
-                      className={`w-3 h-3 transition-transform ${activeDropdown === link.dropdownType ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
                   </button>
                 ) : (
                   <Link

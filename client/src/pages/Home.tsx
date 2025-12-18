@@ -67,20 +67,21 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <section className="relative min-h-screen bg-[#233DFF] pt-24 pb-16 overflow-hidden" data-testid="hero-section">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
-          <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4 animate-pulse-slow"></div>
+          <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute left-1/2 top-1/2 w-1/4 h-1/4 bg-white rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
         
         <div className="container mx-auto px-4 z-10 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-left space-y-8">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight" data-testid="hero-title">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight animate-slide-up" data-testid="hero-title">
                 <span className="italic">Facciamo crescere</span><br />
-                <span className="text-[#CAE8FF]">il tuo locale</span><br />
+                <span className="text-[#CAE8FF]">la tua attività</span><br />
                 <span className="italic">sui social.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-xl leading-relaxed" data-testid="hero-description">
+              <p className="text-xl md:text-2xl text-white/90 max-w-xl leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }} data-testid="hero-description">
                 Gestiamo TikTok e Instagram per ristoranti, bar e attività di Pisa. Contenuti che portano clienti veri.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
@@ -101,17 +102,6 @@ export default function Home() {
                     Vedi i nostri lavori
                   </Button>
                 </Link>
-              </div>
-              
-              <div className="flex items-center gap-6 pt-6">
-                <div className="flex items-center gap-2 text-white/80">
-                  <SiInstagram size={24} />
-                  <span className="font-medium">Instagram</span>
-                </div>
-                <div className="flex items-center gap-2 text-white/80">
-                  <SiTiktok size={24} />
-                  <span className="font-medium">TikTok</span>
-                </div>
               </div>
             </div>
             
@@ -155,7 +145,7 @@ export default function Home() {
             {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div 
                 key={`logo-${logo.id}-${index}`} 
-                className="flex-shrink-0 bg-white rounded-2xl p-4 shadow-sm grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                className="flex-shrink-0 bg-white rounded-2xl p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 <img 
                   src={logo.logo} 
