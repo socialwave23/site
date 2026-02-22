@@ -15,12 +15,12 @@ import { Button } from '@/components/ui/button';
 
 
 const videoProjects = [
-  { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+', logo: "/images/logo-i-porci-comodi-1765228675415.png", description: 'Video virali che hanno portato il locale ad avere una coda fuori dalla porta' },
-  { id: 2, title: 'Cocktail Experience', client: 'La Panacea', platform: 'Instagram', views: '45K+', logo: "/images/logo-la-panacea-1765147679036.png", description: 'Contenuti creativi che mostrano la preparazione dei cocktail signature' },
-  { id: 3, title: 'Event Highlight', client: 'Eleven Cafe', platform: 'TikTok', views: '80K+', logo: "/images/logo-eleven-nuovo-1765147637806.png", description: 'Copertura completa degli eventi speciali del locale' },
-  { id: 4, title: 'Menu Showcase', client: 'I Porci Comodi', platform: 'Instagram', views: '35K+', logo: "/images/logo-i-porci-comodi-1765228675415.png", description: 'Presentazione dinamica dei piatti del nuovo menu stagionale' },
-  { id: 5, title: 'Behind the Scenes', client: 'La Panacea', platform: 'TikTok', views: '60K+', logo: "/images/logo-la-panacea-1765147679036.png", description: 'Il dietro le quinte del locale che ha conquistato i follower' },
-  { id: 6, title: 'Staff Stories', client: 'Eleven Cafe', platform: 'Instagram', views: '25K+', logo: "/images/logo-eleven-nuovo-1765147637806.png", description: 'Video che raccontano le persone dietro al brand' },
+  { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+', logo: "/images/logo-i-porci-comodi.png", description: 'Video virali che hanno portato il locale ad avere una coda fuori dalla porta' },
+  { id: 2, title: 'Cocktail Experience', client: 'La Panacea', platform: 'Instagram', views: '45K+', logo: "/images/logo-la-panacea.png", description: 'Contenuti creativi che mostrano la preparazione dei cocktail signature' },
+  { id: 3, title: 'Event Highlight', client: 'Eleven Cafe', platform: 'TikTok', views: '80K+', logo: "/images/logo-eleven-nuovo.png", description: 'Copertura completa degli eventi speciali del locale' },
+  { id: 4, title: 'Menu Showcase', client: 'I Porci Comodi', platform: 'Instagram', views: '35K+', logo: "/images/logo-i-porci-comodi.png", description: 'Presentazione dinamica dei piatti del nuovo menu stagionale' },
+  { id: 5, title: 'Behind the Scenes', client: 'La Panacea', platform: 'TikTok', views: '60K+', logo: "/images/logo-la-panacea.png", description: 'Il dietro le quinte del locale che ha conquistato i follower' },
+  { id: 6, title: 'Staff Stories', client: 'Eleven Cafe', platform: 'Instagram', views: '25K+', logo: "/images/logo-eleven-nuovo.png", description: 'Video che raccontano le persone dietro al brand' },
 ];
 
 export default function WorksVideo() {
@@ -117,7 +117,7 @@ export default function WorksVideo() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {["/images/img-8661-1766094261378.jpeg", "/images/scw06654-1766094261378.jpg", "/images/scw08763-1766094261378.jpg", "/images/scw08443-1766094261379.jpg", "/images/scw03959-1766094261379.jpg", "/images/dsc08679-1766094261379.jpg"].map((img, idx) => (
+            {["/images/img-8661.jpeg", "/images/scw06654.jpg", "/images/scw08763.jpg", "/images/scw08443.jpg", "/images/scw03959.jpg", "/images/dsc08679.jpg"].map((img, idx) => (
               <div 
                 key={idx}
                 className="relative overflow-hidden rounded-2xl aspect-[3/4] group animate-fade-in"

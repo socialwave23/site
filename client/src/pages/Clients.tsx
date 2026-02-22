@@ -26,7 +26,7 @@ const clients: Client[] = [
     name: 'I Porci Comodi',
     instagramHandle: 'iporcicomodipisa',
     instagramUrl: 'https://www.instagram.com/iporcicomodipisa/',
-    logo: "/images/logo-i-porci-comodi-1765228675415.png",
+    logo: "/images/logo-i-porci-comodi.png",
     description: 'Ristorante di cucina toscana a Pisa, specializzato in piatti a base di carne di maiale di alta qualità. Una tradizione culinaria che conquista i social.',
     category: 'Ristorazione',
     stats: {
@@ -40,7 +40,7 @@ const clients: Client[] = [
     name: 'La Panacea',
     instagramHandle: 'lapanaceapisa',
     instagramUrl: 'https://www.instagram.com/lapanaceapisa/',
-    logo: "/images/logo-la-panacea-1765147679036.png",
+    logo: "/images/logo-la-panacea.png",
     description: 'Il punto di riferimento per aperitivi e cocktail a Pisa. Un\'atmosfera unica dove ogni drink racconta una storia.',
     category: 'Bar & Cocktails',
     stats: {

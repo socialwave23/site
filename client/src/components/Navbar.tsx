@@ -19,7 +19,7 @@ const lavoriCategories = [
     path: '/works/foto',
     description: 'Scatti professionali per il tuo brand',
     stats: '40+ progetti',
-    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147-1766092496651.jpg"]
+    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147.jpg"]
   },
   {
     name: 'Video',
@@ -27,7 +27,7 @@ const lavoriCategories = [
     path: '/works/video',
     description: 'Contenuti virali per TikTok e Instagram',
     stats: '150K+ views',
-    images: ["/images/scw03896-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"]
+    images: ["/images/scw03896.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"]
   },
   {
     name: 'Profili Social',
@@ -35,7 +35,7 @@ const lavoriCategories = [
     path: '/works/social',
     description: 'Gestione completa dei tuoi canali',
     stats: '25K+ followers',
-    images: ["/images/dsc01147-1766092496651.jpg", "/images/scw03896-1766092496651.jpg"]
+    images: ["/images/dsc01147.jpg", "/images/scw03896.jpg"]
   },
 ];
 

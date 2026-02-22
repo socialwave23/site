@@ -18,16 +18,16 @@ const staggerContainer = {
 };
 
 const clientLogos = [
-  { id: 1, name: 'Amaro', logo: "/images/logo-amaro-1765147444899.png" },
-  { id: 2, name: 'Aurelia Car', logo: "/images/logo-aurelia-car-1765147454196.png" },
-  { id: 3, name: 'Chez Nous', logo: "/images/logo-chez-nous-1765147628056.png" },
-  { id: 4, name: 'Eleven Cafe', logo: "/images/logo-eleven-nuovo-1765147637806.png" },
-  { id: 5, name: 'La Panacea', logo: "/images/logo-la-panacea-1765147679036.png" },
-  { id: 6, name: 'I Porci Comodi', logo: "/images/logo-i-porci-comodi-1765228675415.png" },
-  { id: 7, name: 'La Cantina', logo: "/images/logo-la-cantina-1765228681883.png" },
-  { id: 8, name: 'Offish', logo: "/images/logo-offish-1765228699600.png" },
-  { id: 9, name: "L'Ostellino", logo: "/images/logo-ostellino-1765228708352.png" },
-  { id: 10, name: 'We Love Pasta', logo: "/images/logo-welovepasta-1765228725933.png" },
+  { id: 1, name: 'Amaro', logo: "/images/logo-amaro.png" },
+  { id: 2, name: 'Aurelia Car', logo: "/images/logo-aurelia-car.png" },
+  { id: 3, name: 'Chez Nous', logo: "/images/logo-chez-nous.png" },
+  { id: 4, name: 'Eleven Cafe', logo: "/images/logo-eleven-nuovo.png" },
+  { id: 5, name: 'La Panacea', logo: "/images/logo-la-panacea.png" },
+  { id: 6, name: 'I Porci Comodi', logo: "/images/logo-i-porci-comodi.png" },
+  { id: 7, name: 'La Cantina', logo: "/images/logo-la-cantina.png" },
+  { id: 8, name: 'Offish', logo: "/images/logo-offish.png" },
+  { id: 9, name: "L'Ostellino", logo: "/images/logo-ostellino.png" },
+  { id: 10, name: 'We Love Pasta', logo: "/images/logo-welovepasta.png" },
 ];
 
 const stats = [
@@ -151,7 +151,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   <img
-                    src="/images/img-0471-1765229138639.jpeg"
+                    src="/images/img-0471.jpeg"
                     alt="Social media content creation"
                     className="w-full h-full object-cover"
                   />
@@ -163,7 +163,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   <img
-                    src="/images/dsc01147-1766092496651.jpg"
+                    src="/images/dsc01147.jpg"
                     alt="Portfolio content"
                     className="w-full h-full object-cover"
                   />
@@ -282,14 +282,14 @@ export default function Home() {
                 </div>
                 <div className="relative w-56 h-[400px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
                   <img
-                    src="/images/dsc09073-1766092496651.jpg"
+                    src="/images/dsc09073.jpg"
                     alt="Social media content"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
                   <img
-                    src="/images/dsc01147-1766092496651.jpg"
+                    src="/images/dsc01147.jpg"
                     alt="Restaurant photography"
                     className="w-full h-full object-cover"
                   />
@@ -377,7 +377,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CAE8FF] to-[#233DFF]/20 rounded-3xl transform rotate-6"></div>
                 <div className="absolute inset-0 bg-white rounded-3xl shadow-xl overflow-hidden">
                   <img
-                    src="/images/img-1860-1766094261378.jpeg"
+                    src="/images/img-1860.jpeg"
                     alt="Team at work"
                     className="w-full h-full object-cover"
                   />
@@ -411,12 +411,12 @@ export default function Home() {
             }}
           >
             {[
-              "/images/img-0663-1766094261378.jpeg",
-              "/images/img-2496-1766094261378.jpeg",
-              "/images/img-3710-1766094261378.jpeg",
-              "/images/img-1860-1766094261378.jpeg",
-              "/images/scw02026-1766094261379.jpg",
-              "/images/photo-2024-01-04-18-49-54-1766094261379.jpg"
+              "/images/img-0663.jpeg",
+              "/images/img-2496.jpeg",
+              "/images/img-3710.jpeg",
+              "/images/img-1860.jpeg",
+              "/images/scw02026.jpg",
+              "/images/photo-2024-01-04-18-49-54.jpg"
             ].map((img, idx) => (
               <motion.div
                 key={idx}
