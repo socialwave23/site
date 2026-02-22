@@ -16,7 +16,7 @@ const categories = [
     icon: Camera,
     description: 'Scatti professionali che catturano l\'essenza del tuo brand',
     stats: '40+ progetti',
-    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147.jpg", "/images/scw03896.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"],
+    images: ["/images/foto-esempio-ristorazione-sw1.jpg", "/images/dsc01147.jpg", "/images/scw03896.jpg", "/images/foto-esempio-ristorazione-sw5.jpg"],
     gradient: 'from-[#233DFF] to-[#050A30]',
     path: '/works/foto'
   },
@@ -27,7 +27,7 @@ const categories = [
     icon: Video,
     description: 'Contenuti video virali per TikTok e Instagram',
     stats: '150K+ views',
-    images: ["/images/scw03896.jpg", "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"],
+    images: ["/images/scw03896.jpg", "/images/foto-esempio-ristorazione-sw1.jpg", "/images/dsc01147.jpg", "/images/foto-esempio-ristorazione-sw5.jpg"],
     gradient: 'from-[#050A30] to-[#233DFF]',
     path: '/works/video'
   },
@@ -38,7 +38,7 @@ const categories = [
     icon: Smartphone,
     description: 'Gestione completa dei tuoi canali social',
     stats: '25K+ followers gestiti',
-    images: ["/images/dsc01147.jpg", "/images/scw03896.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg", "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg"],
+    images: ["/images/dsc01147.jpg", "/images/scw03896.jpg", "/images/foto-esempio-ristorazione-sw5.jpg", "/images/foto-esempio-ristorazione-sw1.jpg"],
     gradient: 'from-[#233DFF] via-[#050A30] to-[#233DFF]',
     path: '/works/social'
   }

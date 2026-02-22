@@ -275,7 +275,7 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -left-12 top-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform -rotate-12 overflow-hidden">
                   <img
-                    src="/images/Foto_esempio_ristorazione_SW6_1766092218577.jpg"
+                    src="/images/foto-esempio-ristorazione-sw6.jpg"
                     alt="Food photography"
                     className="w-full h-full object-cover"
                   />
