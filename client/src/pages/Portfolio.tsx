@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { Link } from 'wouter';
 
-import heroPhoto from "/images/IMG_0471_1765229138639.jpeg";
+
 
 const serviceCategories = [
   { id: 'social', label: 'Social Media', emoji: '📱' },
@@ -48,7 +48,7 @@ function PhoneMockups() {
       </div>
       <div className="relative w-52 h-[380px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
         <img 
-          src={heroPhoto} 
+          src={"/images/img-0471-1765229138639.jpeg"} 
           alt="Social media content" 
           className="w-full h-full object-cover"
         />
@@ -83,21 +83,21 @@ function PhotoVideoMockup() {
     <div className="relative flex justify-center items-center h-[400px]">
       <div className="absolute left-0 top-0 w-64 h-48 bg-white rounded-2xl shadow-xl overflow-hidden transform -rotate-6">
         <img 
-          src={heroPhoto} 
+          src={"/images/img-0471-1765229138639.jpeg"} 
           alt="Food photography" 
           className="w-full h-full object-cover"
         />
       </div>
       <div className="absolute right-0 bottom-0 w-72 h-52 bg-white rounded-2xl shadow-xl overflow-hidden transform rotate-6">
         <img 
-          src={heroPhoto} 
+          src={"/images/img-0471-1765229138639.jpeg"} 
           alt="Video production" 
           className="w-full h-full object-cover"
         />
       </div>
       <div className="absolute right-12 top-8 w-56 h-40 bg-white rounded-2xl shadow-xl overflow-hidden transform rotate-3 z-10">
         <img 
-          src={heroPhoto} 
+          src={"/images/img-0471-1765229138639.jpeg"} 
           alt="Event coverage" 
           className="w-full h-full object-cover"
         />

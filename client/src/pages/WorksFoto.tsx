@@ -2,107 +2,107 @@ import { Link } from 'wouter';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import foto1 from "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
-import foto2 from "/images/Foto_esempio_ristorazione_SW2_1766092218578.jpg";
-import foto6 from "/images/Foto_esempio_ristorazione_SW6_1766092218577.jpg";
-import foto10 from "/images/Foto_esempio_ristorazione_SW10_1766092218577.jpg";
-import foto14 from "/images/Foto_esempio_ristorazione_SW14_1766092218580.jpg";
-import foto15 from "/images/Foto_esempio_ristorazione_SW15_1766092218577.jpg";
-import foto21 from "/images/Foto_esempio_ristorazione_SW21_1766092218578.jpg";
-import foto22 from "/images/Foto_esempio_ristorazione_SW22_1766092218580.jpg";
-import foto23 from "/images/Foto_esempio_ristorazione_SW23_1766092218580.jpg";
-import foto24 from "/images/Foto_esempio_ristorazione_SW24_1766092218579.jpg";
-import foto25 from "/images/Foto_esempio_ristorazione_SW25_1766092218577.jpg";
-import foto26 from "/images/Foto_esempio_ristorazione_SW26_1766092218578.jpg";
-import foto28 from "/images/Foto_esempio_ristorazione_SW28.jpg_1766092218579.jpg";
-import scw01423 from "/images/SCW01423_1766092218578.jpg";
-import scw01425 from "/images/SCW01425_1766092218578.jpg";
-import scw01836 from "/images/SCW01836_1766092218579.jpg";
-import scw03269 from "/images/SCW03269_1766092218577.jpg";
-import scw03300 from "/images/SCW03300_1766092218577.jpg";
-import scw08138 from "/images/SCW08138_1766092218579.jpg";
-import scw08342 from "/images/SCW08342_1766092218579.jpg";
 
-import dsc01104 from "/images/DSC01104_1766092496653.jpg";
-import dsc01147 from "/images/DSC01147_1766092496651.jpg";
-import dsc01216 from "/images/DSC01216_1766092496651.jpg";
-import dsc01224 from "/images/DSC01224_1766092496651.jpg";
-import dsc01808 from "/images/DSC01808_1766092496651.jpg";
-import dsc08959 from "/images/DSC08959_1766092496653.jpg";
-import dsc09073 from "/images/DSC09073_1766092496651.jpg";
-import foto13 from "/images/Foto_esempio_ristorazione_SW13_1766092496652.jpg";
-import foto18 from "/images/Foto_esempio_ristorazione_SW18_1766092496652.jpg";
-import foto27 from "/images/Foto_esempio_ristorazione_SW27_1766092496652.jpg";
-import foto32 from "/images/Foto_esempio_ristorazione_SW32_1766092496652.jpg";
-import foto4 from "/images/Foto_esempio_ristorazione_SW4_1766092496652.jpg";
-import foto5 from "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
-import foto8 from "/images/Foto_esempio_ristorazione_SW8_1766092496653.jpg";
-import scw01765 from "/images/SCW01765_1766092496652.jpg";
-import scw03205 from "/images/SCW03205_1766092496652.jpg";
-import scw03291 from "/images/SCW03291_1766092496651.jpg";
-import scw03542 from "/images/SCW03542_1766092496653.jpg";
-import scw03896 from "/images/SCW03896_1766092496651.jpg";
-import scw08707 from "/images/SCW08707_1766092496652.jpg";
 
-import scw09734 from "/images/SCW09734_1766093232591.jpg";
-import scw09846 from "/images/SCW09846_1766093232592.jpg";
-import scw01649 from "/images/SCW01649_copia_1766093240163.jpg";
-import massage1 from "/images/4148C272-5E51-4F45-92D9-499A341AB12A_1766093280520.jpg";
-import scw09299 from "/images/SCW09299_1766093280521.jpg";
-import tiziana from "/images/Tiziana_3_1766093280521.jpg";
 
-import backstageFoto1 from "/images/IMG_0663_1766094261378.jpeg";
-import backstageFoto2 from "/images/IMG_3710_1766094261378.jpeg";
-import backstageFoto3 from "/images/IMG_2032_1766094261379.jpeg";
-import backstageFoto4 from "/images/IMG_1860_1766094261378.jpeg";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const photoGallery = [
-  { id: 1, image: foto1 },
-  { id: 2, image: dsc01147 },
-  { id: 3, image: foto6 },
-  { id: 4, image: scw03896 },
-  { id: 5, image: scw09734 },
-  { id: 6, image: dsc09073 },
-  { id: 7, image: foto15 },
-  { id: 8, image: scw09846 },
-  { id: 9, image: dsc01216 },
-  { id: 10, image: dsc01224 },
-  { id: 11, image: scw01649 },
-  { id: 12, image: foto18 },
-  { id: 13, image: scw08707 },
-  { id: 14, image: massage1 },
-  { id: 15, image: foto25 },
-  { id: 16, image: foto5 },
-  { id: 17, image: scw09299 },
-  { id: 18, image: dsc08959 },
-  { id: 19, image: foto27 },
-  { id: 20, image: tiziana },
-  { id: 21, image: foto32 },
-  { id: 22, image: foto13 },
-  { id: 23, image: foto4 },
-  { id: 24, image: foto8 },
-  { id: 25, image: foto2 },
-  { id: 26, image: foto10 },
-  { id: 27, image: foto14 },
-  { id: 28, image: foto21 },
-  { id: 29, image: foto22 },
-  { id: 30, image: foto23 },
-  { id: 31, image: foto24 },
-  { id: 32, image: foto26 },
-  { id: 33, image: foto28 },
-  { id: 34, image: scw01423 },
-  { id: 35, image: scw01425 },
-  { id: 36, image: scw01836 },
-  { id: 37, image: scw03269 },
-  { id: 38, image: scw03300 },
-  { id: 39, image: scw08138 },
-  { id: 40, image: scw08342 },
-  { id: 41, image: dsc01104 },
-  { id: 42, image: dsc01808 },
-  { id: 43, image: scw01765 },
-  { id: 44, image: scw03205 },
-  { id: 45, image: scw03291 },
-  { id: 46, image: scw03542 },
+  { id: 1, image: "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg" },
+  { id: 2, image: "/images/dsc01147-1766092496651.jpg" },
+  { id: 3, image: "/images/Foto_esempio_ristorazione_SW6_1766092218577.jpg" },
+  { id: 4, image: "/images/scw03896-1766092496651.jpg" },
+  { id: 5, image: "/images/scw09734-1766093232591.jpg" },
+  { id: 6, image: "/images/dsc09073-1766092496651.jpg" },
+  { id: 7, image: "/images/foto-esempio-ristorazione-sw15-1766092218577.jpg" },
+  { id: 8, image: "/images/scw09846-1766093232592.jpg" },
+  { id: 9, image: "/images/dsc01216-1766092496651.jpg" },
+  { id: 10, image: "/images/dsc01224-1766092496651.jpg" },
+  { id: 11, image: "/images/scw01649-copia-1766093240163.jpg" },
+  { id: 12, image: "/images/Foto_esempio_ristorazione_SW18_1766092496652.jpg" },
+  { id: 13, image: "/images/scw08707-1766092496652.jpg" },
+  { id: 14, image: "/images/4148C272-5E51-4F45-92D9-499A341AB12A_1766093280520.jpg" },
+  { id: 15, image: "/images/Foto_esempio_ristorazione_SW25_1766092218577.jpg" },
+  { id: 16, image: "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg" },
+  { id: 17, image: "/images/scw09299-1766093280521.jpg" },
+  { id: 18, image: "/images/dsc08959-1766092496653.jpg" },
+  { id: 19, image: "/images/Foto_esempio_ristorazione_SW27_1766092496652.jpg" },
+  { id: 20, image: "/images/tiziana-3-1766093280521.jpg" },
+  { id: 21, image: "/images/foto-esempio-ristorazione-sw32-1766092496652.jpg" },
+  { id: 22, image: "/images/foto-esempio-ristorazione-sw13-1766092496652.jpg" },
+  { id: 23, image: "/images/Foto_esempio_ristorazione_SW4_1766092496652.jpg" },
+  { id: 24, image: "/images/Foto_esempio_ristorazione_SW8_1766092496653.jpg" },
+  { id: 25, image: "/images/Foto_esempio_ristorazione_SW2_1766092218578.jpg" },
+  { id: 26, image: "/images/Foto_esempio_ristorazione_SW10_1766092218577.jpg" },
+  { id: 27, image: "/images/Foto_esempio_ristorazione_SW14_1766092218580.jpg" },
+  { id: 28, image: "/images/Foto_esempio_ristorazione_SW21_1766092218578.jpg" },
+  { id: 29, image: "/images/Foto_esempio_ristorazione_SW22_1766092218580.jpg" },
+  { id: 30, image: "/images/Foto_esempio_ristorazione_SW23_1766092218580.jpg" },
+  { id: 31, image: "/images/Foto_esempio_ristorazione_SW24_1766092218579.jpg" },
+  { id: 32, image: "/images/Foto_esempio_ristorazione_SW26_1766092218578.jpg" },
+  { id: 33, image: "/images/foto-esempio-ristorazione-sw28.jpg-1766092218579.jpg" },
+  { id: 34, image: "/images/scw01423-1766092218578.jpg" },
+  { id: 35, image: "/images/scw01425-1766092218578.jpg" },
+  { id: 36, image: "/images/scw01836-1766092218579.jpg" },
+  { id: 37, image: "/images/scw03269-1766092218577.jpg" },
+  { id: 38, image: "/images/scw03300-1766092218577.jpg" },
+  { id: 39, image: "/images/scw08138-1766092218579.jpg" },
+  { id: 40, image: "/images/scw08342-1766092218579.jpg" },
+  { id: 41, image: "/images/dsc01104-1766092496653.jpg" },
+  { id: 42, image: "/images/dsc01808-1766092496651.jpg" },
+  { id: 43, image: "/images/scw01765-1766092496652.jpg" },
+  { id: 44, image: "/images/scw03205-1766092496652.jpg" },
+  { id: 45, image: "/images/scw03291-1766092496651.jpg" },
+  { id: 46, image: "/images/scw03542-1766092496653.jpg" },
 ];
 
 export default function WorksFoto() {
@@ -194,7 +194,7 @@ export default function WorksFoto() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {[backstageFoto1, backstageFoto2, backstageFoto3, backstageFoto4].map((img, idx) => (
+            {["/images/img-0663-1766094261378.jpeg", "/images/img-3710-1766094261378.jpeg", "/images/img-2032-1766094261379.jpeg", "/images/img-1860-1766094261378.jpeg"].map((img, idx) => (
               <div 
                 key={idx}
                 className="relative overflow-hidden rounded-2xl aspect-[3/4] group animate-fade-in"

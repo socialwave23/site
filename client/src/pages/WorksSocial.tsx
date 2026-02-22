@@ -3,16 +3,16 @@ import { ArrowLeft, ArrowRight, TrendingUp, Users, Heart } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 
-import logoPorciComodi from "/images/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "/images/Logo_La_Panacea_1765147679036.png";
-import logoEleven from "/images/Logo_Eleven_nuovo_1765147637806.png";
+
+
+
 
 const managedProfiles = [
   { 
     id: 1, 
     name: 'I Porci Comodi', 
     handle: '@iporcicomodipisa', 
-    logo: logoPorciComodi, 
+    logo: "/images/logo-i-porci-comodi-1765228675415.png", 
     followers: '12.5K', 
     platform: 'instagram',
     growth: '+340%',
@@ -23,7 +23,7 @@ const managedProfiles = [
     id: 2, 
     name: 'La Panacea', 
     handle: '@lapanaceapisa', 
-    logo: logoPanacea, 
+    logo: "/images/logo-la-panacea-1765147679036.png", 
     followers: '8.2K', 
     platform: 'instagram',
     growth: '+180%',
@@ -34,7 +34,7 @@ const managedProfiles = [
     id: 3, 
     name: 'Eleven Cafe', 
     handle: '@elevencafepisa', 
-    logo: logoEleven, 
+    logo: "/images/logo-eleven-nuovo-1765147637806.png", 
     followers: '5.8K', 
     platform: 'tiktok',
     growth: '+520%',
@@ -45,7 +45,7 @@ const managedProfiles = [
     id: 4, 
     name: 'I Porci Comodi', 
     handle: '@iporcicomodipisa', 
-    logo: logoPorciComodi, 
+    logo: "/images/logo-i-porci-comodi-1765228675415.png", 
     followers: '4.2K', 
     platform: 'tiktok',
     growth: '+890%',

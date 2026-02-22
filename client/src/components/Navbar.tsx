@@ -19,7 +19,7 @@ const lavoriCategories = [
     path: '/works/foto',
     description: 'Scatti professionali per il tuo brand',
     stats: '40+ progetti',
-    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/DSC01147_1766092496651.jpg"]
+    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147-1766092496651.jpg"]
   },
   {
     name: 'Video',
@@ -27,7 +27,7 @@ const lavoriCategories = [
     path: '/works/video',
     description: 'Contenuti virali per TikTok e Instagram',
     stats: '150K+ views',
-    images: ["/images/SCW03896_1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"]
+    images: ["/images/scw03896-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"]
   },
   {
     name: 'Profili Social',
@@ -35,7 +35,7 @@ const lavoriCategories = [
     path: '/works/social',
     description: 'Gestione completa dei tuoi canali',
     stats: '25K+ followers',
-    images: ["/images/DSC01147_1766092496651.jpg", "/images/SCW03896_1766092496651.jpg"]
+    images: ["/images/dsc01147-1766092496651.jpg", "/images/scw03896-1766092496651.jpg"]
   },
 ];
 
@@ -205,7 +205,7 @@ export function Navbar() {
   };
 
   const navBg = scrolled || !isHeroPage || activeDropdown
-    ? 'bg-white shadow-sm'
+    ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100/50'
     : 'bg-transparent';
 
   const textColor = scrolled || !isHeroPage || activeDropdown
@@ -248,24 +248,32 @@ export function Navbar() {
                     onClick={handleNav}
                     data-testid={`nav-link-${link.name.toLowerCase()}`}
                   >
-                    <span className={`text-sm font-semibold transition-colors duration-200 cursor-pointer px-4 py-2 block ${location === link.path
+                    <span className={`relative text-sm font-semibold transition-colors duration-200 cursor-pointer px-4 py-2 block group ${location === link.path
                       ? activeColor
-                      : `${textColor} hover:opacity-80`
+                      : `${textColor} hover:opacity-100`
                       }`}>
                       {link.name}
+                      <span className={`absolute -bottom-1 left-4 right-4 h-[2px] bg-[#233DFF] transform origin-left transition-transform duration-300 ${location === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                     </span>
                   </Link>
                 )}
               </div>
             ))}
             <Link href="/contact" onClick={handleNav}>
-              <Button
-                className="bg-[#233DFF] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 hover:bg-[#1a2fc7] ml-2"
-                data-testid="nav-cta-button"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Phone size={16} />
-                Contattaci
-              </Button>
+                <Button
+                  className="bg-[#233DFF] text-white rounded-full font-semibold shadow-lg shadow-blue-500/30 flex items-center gap-2 hover:bg-[#1a2fc7] ml-2 group relative overflow-hidden transition-all duration-300"
+                  data-testid="nav-cta-button"
+                >
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                  <Phone size={16} />
+                  Contattaci
+                </Button>
+              </motion.div>
             </Link>
           </div>
 

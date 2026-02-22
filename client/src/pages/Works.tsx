@@ -3,10 +3,10 @@ import { ArrowRight, Camera, Video, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
-import foto1 from "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
-import dsc01147 from "/images/DSC01147_1766092496651.jpg";
-import scw03896 from "/images/SCW03896_1766092496651.jpg";
-import foto5 from "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
+
+
+
+
 
 const categories = [
   {
@@ -16,7 +16,7 @@ const categories = [
     icon: Camera,
     description: 'Scatti professionali che catturano l\'essenza del tuo brand',
     stats: '40+ progetti',
-    images: [foto1, dsc01147, scw03896, foto5],
+    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147-1766092496651.jpg", "/images/scw03896-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"],
     gradient: 'from-[#233DFF] to-[#050A30]',
     path: '/works/foto'
   },
@@ -27,7 +27,7 @@ const categories = [
     icon: Video,
     description: 'Contenuti video virali per TikTok e Instagram',
     stats: '150K+ views',
-    images: [scw03896, foto1, dsc01147, foto5],
+    images: ["/images/scw03896-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/dsc01147-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"],
     gradient: 'from-[#050A30] to-[#233DFF]',
     path: '/works/video'
   },
@@ -38,7 +38,7 @@ const categories = [
     icon: Smartphone,
     description: 'Gestione completa dei tuoi canali social',
     stats: '25K+ followers gestiti',
-    images: [dsc01147, scw03896, foto5, foto1],
+    images: ["/images/dsc01147-1766092496651.jpg", "/images/scw03896-1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg", "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg"],
     gradient: 'from-[#233DFF] via-[#050A30] to-[#233DFF]',
     path: '/works/social'
   }

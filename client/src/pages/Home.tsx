@@ -4,17 +4,30 @@ import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
 const clientLogos = [
-  { id: 1, name: 'Amaro', logo: "/images/Logo_Amaro_1765147444899.png" },
-  { id: 2, name: 'Aurelia Car', logo: "/images/Logo_Aurelia_Car_1765147454196.png" },
-  { id: 3, name: 'Chez Nous', logo: "/images/Logo_Chez_Nous_1765147628056.png" },
-  { id: 4, name: 'Eleven Cafe', logo: "/images/Logo_Eleven_nuovo_1765147637806.png" },
-  { id: 5, name: 'La Panacea', logo: "/images/Logo_La_Panacea_1765147679036.png" },
-  { id: 6, name: 'I Porci Comodi', logo: "/images/Logo_I_Porci_Comodi_1765228675415.png" },
-  { id: 7, name: 'La Cantina', logo: "/images/Logo_La_Cantina_1765228681883.png" },
-  { id: 8, name: 'Offish', logo: "/images/Logo_Offish_1765228699600.png" },
-  { id: 9, name: "L'Ostellino", logo: "/images/Logo_Ostellino_1765228708352.png" },
-  { id: 10, name: 'We Love Pasta', logo: "/images/Logo_WeLovePasta_1765228725933.png" },
+  { id: 1, name: 'Amaro', logo: "/images/logo-amaro-1765147444899.png" },
+  { id: 2, name: 'Aurelia Car', logo: "/images/logo-aurelia-car-1765147454196.png" },
+  { id: 3, name: 'Chez Nous', logo: "/images/logo-chez-nous-1765147628056.png" },
+  { id: 4, name: 'Eleven Cafe', logo: "/images/logo-eleven-nuovo-1765147637806.png" },
+  { id: 5, name: 'La Panacea', logo: "/images/logo-la-panacea-1765147679036.png" },
+  { id: 6, name: 'I Porci Comodi', logo: "/images/logo-i-porci-comodi-1765228675415.png" },
+  { id: 7, name: 'La Cantina', logo: "/images/logo-la-cantina-1765228681883.png" },
+  { id: 8, name: 'Offish', logo: "/images/logo-offish-1765228699600.png" },
+  { id: 9, name: "L'Ostellino", logo: "/images/logo-ostellino-1765228708352.png" },
+  { id: 10, name: 'We Love Pasta', logo: "/images/logo-welovepasta-1765228725933.png" },
 ];
 
 const stats = [
@@ -64,32 +77,40 @@ export default function Home() {
 
         <div className="container mx-auto px-4 z-10 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left space-y-8">
+            <motion.div
+              className="text-left space-y-8"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
               <motion.h1
                 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
                 data-testid="hero-title"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                variants={fadeUpVariants}
               >
-                <span className="italic">Facciamo crescere</span><br />
+                <span className="italic relative inline-block">
+                  Facciamo crescere
+                  <motion.span
+                    className="absolute -bottom-2 left-0 w-full h-[4px] bg-[#233DFF]"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                    style={{ originX: 0 }}
+                  />
+                </span><br />
                 <span className="text-[#CAE8FF]">la tua attività</span><br />
                 <span className="italic">sui social.</span>
               </motion.h1>
               <motion.p
                 className="text-xl md:text-2xl text-white/90 max-w-xl leading-relaxed"
                 data-testid="hero-description"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                variants={fadeUpVariants}
               >
                 Gestiamo TikTok e Instagram per ristoranti, bar e attività di Pisa. Contenuti che portano clienti veri.
               </motion.p>
               <motion.div
                 className="flex flex-wrap gap-4 pt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                variants={fadeUpVariants}
               >
                 <Link href="/contact" onClick={handleScrollTop}>
                   <Button
@@ -109,7 +130,7 @@ export default function Home() {
                   </Button>
                 </Link>
               </motion.div>
-            </div>
+            </motion.div>
 
             <div className="relative hidden lg:flex justify-center items-center">
               <div className="relative">
@@ -130,7 +151,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   <img
-                    src="/images/IMG_0471_1765229138639.jpeg"
+                    src="/images/img-0471-1765229138639.jpeg"
                     alt="Social media content creation"
                     className="w-full h-full object-cover"
                   />
@@ -142,7 +163,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   <img
-                    src="/images/DSC01147_1766092496651.jpg"
+                    src="/images/dsc01147-1766092496651.jpg"
                     alt="Portfolio content"
                     className="w-full h-full object-cover"
                   />
@@ -151,7 +172,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       <section className="py-12 bg-gray-50 overflow-hidden" data-testid="clients-section">
         <div className="container mx-auto px-4 mb-6">
@@ -214,19 +235,21 @@ export default function Home() {
                 }}
                 transition={{ type: "spring", stiffness: 100 }}
               >
-                <Link href="/portfolio" onClick={handleScrollTop}>
-                  <Button
-                    variant={service.active ? 'default' : 'outline'}
-                    className={`rounded-full px-6 py-3 font-semibold flex items-center gap-2 ${service.active
-                      ? 'bg-slate-900 text-white hover:bg-slate-800'
-                      : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300'
-                      }`}
-                    data-testid={`service-category-${service.id}`}
-                  >
-                    {service.label}
-                    <span className="text-lg">{service.emoji}</span>
-                  </Button>
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                  <Link href="/portfolio" onClick={handleScrollTop}>
+                    <Button
+                      variant={service.active ? 'default' : 'outline'}
+                      className={`rounded-full px-6 py-3 font-semibold flex items-center gap-2 transition-all duration-300 ${service.active
+                        ? 'bg-slate-900 text-white hover:bg-slate-800 shadow-xl'
+                        : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300'
+                        }`}
+                      data-testid={`service-category-${service.id}`}
+                    >
+                      {service.label}
+                      <span className="text-lg">{service.emoji}</span>
+                    </Button>
+                  </Link>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
@@ -259,14 +282,14 @@ export default function Home() {
                 </div>
                 <div className="relative w-56 h-[400px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
                   <img
-                    src="/images/DSC09073_1766092496651.jpg"
+                    src="/images/dsc09073-1766092496651.jpg"
                     alt="Social media content"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
                   <img
-                    src="/images/DSC01147_1766092496651.jpg"
+                    src="/images/dsc01147-1766092496651.jpg"
                     alt="Restaurant photography"
                     className="w-full h-full object-cover"
                   />
@@ -279,21 +302,29 @@ export default function Home() {
 
       <section className="py-20 bg-gray-50" data-testid="stats-section">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {stats.map((stat, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="text-center"
+                className="text-center bg-white p-6 rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300"
+                variants={fadeUpVariants}
+                whileHover={{ y: -5 }}
                 data-testid={`stat-${index}`}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#CAE8FF] text-2xl mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#CAE8FF] text-2xl mb-4 shadow-inner">
                   {stat.emoji}
                 </div>
                 <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{stat.value}</div>
                 <p className="text-gray-600 text-sm md:text-base">{stat.label}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -346,7 +377,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CAE8FF] to-[#233DFF]/20 rounded-3xl transform rotate-6"></div>
                 <div className="absolute inset-0 bg-white rounded-3xl shadow-xl overflow-hidden">
                   <img
-                    src="/images/IMG_1860_1766094261378.jpeg"
+                    src="/images/img-1860-1766094261378.jpeg"
                     alt="Team at work"
                     className="w-full h-full object-cover"
                   />
@@ -380,12 +411,12 @@ export default function Home() {
             }}
           >
             {[
-              "/images/IMG_0663_1766094261378.jpeg",
-              "/images/IMG_2496_1766094261378.jpeg",
-              "/images/IMG_3710_1766094261378.jpeg",
-              "/images/IMG_1860_1766094261378.jpeg",
-              "/images/SCW02026_1766094261379.jpg",
-              "/images/PHOTO-2024-01-04-18-49-54_1766094261379.jpg"
+              "/images/img-0663-1766094261378.jpeg",
+              "/images/img-2496-1766094261378.jpeg",
+              "/images/img-3710-1766094261378.jpeg",
+              "/images/img-1860-1766094261378.jpeg",
+              "/images/scw02026-1766094261379.jpg",
+              "/images/photo-2024-01-04-18-49-54-1766094261379.jpg"
             ].map((img, idx) => (
               <motion.div
                 key={idx}
@@ -437,6 +468,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
