@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { Link } from 'wouter';
 
-import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
+import heroPhoto from "/images/IMG_0471_1765229138639.jpeg";
 
 const serviceCategories = [
   { id: 'social', label: 'Social Media', emoji: '📱' },

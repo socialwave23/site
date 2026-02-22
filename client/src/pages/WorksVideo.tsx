@@ -3,16 +3,16 @@ import { ArrowLeft, ArrowRight, Play } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
-import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
+import logoPorciComodi from "/images/Logo_I_Porci_Comodi_1765228675415.png";
+import logoPanacea from "/images/Logo_La_Panacea_1765147679036.png";
+import logoEleven from "/images/Logo_Eleven_nuovo_1765147637806.png";
 
-import backstageVideo1 from "@assets/IMG_8661_1766094261378.jpeg";
-import backstageVideo2 from "@assets/SCW06654_1766094261378.jpg";
-import backstageVideo3 from "@assets/SCW08763_1766094261378.jpg";
-import backstageVideo4 from "@assets/SCW08443_1766094261379.jpg";
-import backstageVideo5 from "@assets/SCW03959_1766094261379.jpg";
-import backstageVideo6 from "@assets/DSC08679_1766094261379.jpg";
+import backstageVideo1 from "/images/IMG_8661_1766094261378.jpeg";
+import backstageVideo2 from "/images/SCW06654_1766094261378.jpg";
+import backstageVideo3 from "/images/SCW08763_1766094261378.jpg";
+import backstageVideo4 from "/images/SCW08443_1766094261379.jpg";
+import backstageVideo5 from "/images/SCW03959_1766094261379.jpg";
+import backstageVideo6 from "/images/DSC08679_1766094261379.jpg";
 
 const videoProjects = [
   { id: 1, title: 'Viral Food Content', client: 'I Porci Comodi', platform: 'TikTok', views: '150K+', logo: logoPorciComodi, description: 'Video virali che hanno portato il locale ad avere una coda fuori dalla porta' },

@@ -5,11 +5,6 @@ import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
-import dsc01147 from "@assets/DSC01147_1766092496651.jpg";
-import scw03896 from "@assets/SCW03896_1766092496651.jpg";
-import foto5 from "@assets/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
-
 const navLinks = [
   { name: 'Servizi', path: '/portfolio' },
   { name: 'Lavori', path: '/works', hasDropdown: true, dropdownType: 'lavori' },
@@ -24,7 +19,7 @@ const lavoriCategories = [
     path: '/works/foto',
     description: 'Scatti professionali per il tuo brand',
     stats: '40+ progetti',
-    images: [foto1, dsc01147]
+    images: ["/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg", "/images/DSC01147_1766092496651.jpg"]
   },
   {
     name: 'Video',
@@ -32,7 +27,7 @@ const lavoriCategories = [
     path: '/works/video',
     description: 'Contenuti virali per TikTok e Instagram',
     stats: '150K+ views',
-    images: [scw03896, foto5]
+    images: ["/images/SCW03896_1766092496651.jpg", "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg"]
   },
   {
     name: 'Profili Social',
@@ -40,7 +35,7 @@ const lavoriCategories = [
     path: '/works/social',
     description: 'Gestione completa dei tuoi canali',
     stats: '25K+ followers',
-    images: [dsc01147, scw03896]
+    images: ["/images/DSC01147_1766092496651.jpg", "/images/SCW03896_1766092496651.jpg"]
   },
 ];
 
@@ -240,8 +235,8 @@ export function Navbar() {
                   <button
                     onClick={() => handleDropdownToggle(link.dropdownType!)}
                     className={`text-sm font-semibold transition-all duration-200 cursor-pointer px-4 py-2 rounded-full ${activeDropdown === link.dropdownType
-                        ? 'bg-[#233DFF] text-white'
-                        : `${textColor} hover:opacity-80`
+                      ? 'bg-[#233DFF] text-white'
+                      : `${textColor} hover:opacity-80`
                       }`}
                     data-testid={`nav-link-${link.name.toLowerCase()}`}
                   >
@@ -254,8 +249,8 @@ export function Navbar() {
                     data-testid={`nav-link-${link.name.toLowerCase()}`}
                   >
                     <span className={`text-sm font-semibold transition-colors duration-200 cursor-pointer px-4 py-2 block ${location === link.path
-                        ? activeColor
-                        : `${textColor} hover:opacity-80`
+                      ? activeColor
+                      : `${textColor} hover:opacity-80`
                       }`}>
                       {link.name}
                     </span>
@@ -311,8 +306,8 @@ export function Navbar() {
                   data-testid={`mobile-nav-link-${link.name.toLowerCase()}`}
                 >
                   <span className={`block text-left text-lg font-medium px-4 py-2 rounded-md cursor-pointer ${location === link.path
-                      ? 'bg-[#CAE8FF] text-[#233DFF]'
-                      : 'text-gray-600'
+                    ? 'bg-[#CAE8FF] text-[#233DFF]'
+                    : 'text-gray-600'
                     }`}>
                     {link.name}
                   </span>

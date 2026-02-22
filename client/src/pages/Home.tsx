@@ -4,40 +4,17 @@ import { Button } from '@/components/ui/button';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
-import logoAmaro from "@assets/Logo_Amaro_1765147444899.png";
-import logoAureliaCar from "@assets/Logo_Aurelia_Car_1765147454196.png";
-import logoChezNous from "@assets/Logo_Chez_Nous_1765147628056.png";
-import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoCantina from "@assets/Logo_La_Cantina_1765228681883.png";
-import logoOffish from "@assets/Logo_Offish_1765228699600.png";
-import logoOstellino from "@assets/Logo_Ostellino_1765228708352.png";
-import logoWeLovePasta from "@assets/Logo_WeLovePasta_1765228725933.png";
-import heroPhoto from "@assets/IMG_0471_1765229138639.jpeg";
-
-import backstage1 from "@assets/IMG_0663_1766094261378.jpeg";
-import backstage2 from "@assets/IMG_2496_1766094261378.jpeg";
-import backstage3 from "@assets/IMG_3710_1766094261378.jpeg";
-import backstage4 from "@assets/IMG_1860_1766094261378.jpeg";
-import backstage5 from "@assets/SCW02026_1766094261379.jpg";
-import backstage6 from "@assets/PHOTO-2024-01-04-18-49-54_1766094261379.jpg";
-
-import portfolioPhoto1 from "@assets/DSC01147_1766092496651.jpg";
-import portfolioPhoto2 from "@assets/Foto_esempio_ristorazione_SW6_1766092218577.jpg";
-import portfolioPhoto3 from "@assets/DSC09073_1766092496651.jpg";
-
 const clientLogos = [
-  { id: 1, name: 'Amaro', logo: logoAmaro },
-  { id: 2, name: 'Aurelia Car', logo: logoAureliaCar },
-  { id: 3, name: 'Chez Nous', logo: logoChezNous },
-  { id: 4, name: 'Eleven Cafe', logo: logoEleven },
-  { id: 5, name: 'La Panacea', logo: logoPanacea },
-  { id: 6, name: 'I Porci Comodi', logo: logoPorciComodi },
-  { id: 7, name: 'La Cantina', logo: logoCantina },
-  { id: 8, name: 'Offish', logo: logoOffish },
-  { id: 9, name: "L'Ostellino", logo: logoOstellino },
-  { id: 10, name: 'We Love Pasta', logo: logoWeLovePasta },
+  { id: 1, name: 'Amaro', logo: "/images/Logo_Amaro_1765147444899.png" },
+  { id: 2, name: 'Aurelia Car', logo: "/images/Logo_Aurelia_Car_1765147454196.png" },
+  { id: 3, name: 'Chez Nous', logo: "/images/Logo_Chez_Nous_1765147628056.png" },
+  { id: 4, name: 'Eleven Cafe', logo: "/images/Logo_Eleven_nuovo_1765147637806.png" },
+  { id: 5, name: 'La Panacea', logo: "/images/Logo_La_Panacea_1765147679036.png" },
+  { id: 6, name: 'I Porci Comodi', logo: "/images/Logo_I_Porci_Comodi_1765228675415.png" },
+  { id: 7, name: 'La Cantina', logo: "/images/Logo_La_Cantina_1765228681883.png" },
+  { id: 8, name: 'Offish', logo: "/images/Logo_Offish_1765228699600.png" },
+  { id: 9, name: "L'Ostellino", logo: "/images/Logo_Ostellino_1765228708352.png" },
+  { id: 10, name: 'We Love Pasta', logo: "/images/Logo_WeLovePasta_1765228725933.png" },
 ];
 
 const stats = [
@@ -153,7 +130,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   <img
-                    src={heroPhoto}
+                    src="/images/IMG_0471_1765229138639.jpeg"
                     alt="Social media content creation"
                     className="w-full h-full object-cover"
                   />
@@ -165,7 +142,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   <img
-                    src={portfolioPhoto1}
+                    src="/images/DSC01147_1766092496651.jpg"
                     alt="Portfolio content"
                     className="w-full h-full object-cover"
                   />
@@ -275,21 +252,21 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -left-12 top-12 w-48 h-80 bg-slate-900 rounded-3xl shadow-2xl transform -rotate-12 overflow-hidden">
                   <img
-                    src={portfolioPhoto2}
+                    src="/images/Foto_esempio_ristorazione_SW6_1766092218577.jpg"
                     alt="Food photography"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="relative w-56 h-[400px] bg-slate-900 rounded-3xl shadow-2xl overflow-hidden z-10 border-4 border-slate-800">
                   <img
-                    src={portfolioPhoto3}
+                    src="/images/DSC09073_1766092496651.jpg"
                     alt="Social media content"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -right-8 bottom-8 w-44 h-72 bg-slate-900 rounded-3xl shadow-2xl transform rotate-12 overflow-hidden">
                   <img
-                    src={portfolioPhoto1}
+                    src="/images/DSC01147_1766092496651.jpg"
                     alt="Restaurant photography"
                     className="w-full h-full object-cover"
                   />
@@ -369,7 +346,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CAE8FF] to-[#233DFF]/20 rounded-3xl transform rotate-6"></div>
                 <div className="absolute inset-0 bg-white rounded-3xl shadow-xl overflow-hidden">
                   <img
-                    src={backstage4}
+                    src="/images/IMG_1860_1766094261378.jpeg"
                     alt="Team at work"
                     className="w-full h-full object-cover"
                   />
@@ -402,7 +379,14 @@ export default function Home() {
               hidden: {}
             }}
           >
-            {[backstage1, backstage2, backstage3, backstage4, backstage5, backstage6].map((img, idx) => (
+            {[
+              "/images/IMG_0663_1766094261378.jpeg",
+              "/images/IMG_2496_1766094261378.jpeg",
+              "/images/IMG_3710_1766094261378.jpeg",
+              "/images/IMG_1860_1766094261378.jpeg",
+              "/images/SCW02026_1766094261379.jpg",
+              "/images/PHOTO-2024-01-04-18-49-54_1766094261379.jpg"
+            ].map((img, idx) => (
               <motion.div
                 key={idx}
                 className="relative overflow-hidden rounded-2xl aspect-square group"

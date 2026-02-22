@@ -2,8 +2,8 @@ import { Link } from 'wouter';
 import { Instagram, ExternalLink, Users, TrendingUp, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
+import logoPorciComodi from "/images/Logo_I_Porci_Comodi_1765228675415.png";
+import logoPanacea from "/images/Logo_La_Panacea_1765147679036.png";
 
 interface Client {
   id: string;

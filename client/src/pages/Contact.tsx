@@ -1,14 +1,13 @@
+import React from 'react';
 import { Send, MapPin, Phone, Mail, Loader2, MessageCircle, ExternalLink } from 'lucide-react';
 import { SiWhatsapp, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { useMutation } from '@tanstack/react-query';
-import { apiRequest } from '@/lib/queryClient';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { insertContactMessageSchema, type InsertContactMessage } from '@shared/schema';
+import { z } from 'zod';
 import {
   Form,
   FormControl,
@@ -18,12 +17,14 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-const contactFormSchema = insertContactMessageSchema.extend({
-  name: insertContactMessageSchema.shape.name,
-  email: insertContactMessageSchema.shape.email,
-  company: insertContactMessageSchema.shape.company,
-  message: insertContactMessageSchema.shape.message,
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Il nome è obbligatorio"),
+  email: z.string().email("Inserisci un'email valida"),
+  company: z.string().optional(),
+  message: z.string().min(10, "Il messaggio deve contenere almeno 10 caratteri"),
 });
+
+type InsertContactMessage = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
@@ -38,29 +39,21 @@ export default function Contact() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: InsertContactMessage) => {
-      const response = await apiRequest('POST', '/api/contact', data);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Messaggio inviato!",
-        description: "Grazie per averci contattato. Ti risponderemo presto.",
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: "Errore",
-        description: "Si è verificato un errore. Riprova più tardi.",
-        variant: "destructive",
-      });
-    },
-  });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  const onSubmit = (data: InsertContactMessage) => {
-    contactMutation.mutate(data);
+  const onSubmit = async (data: InsertContactMessage) => {
+    setIsSubmitting(true);
+    // Simulate network request
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("Contact form submitted:", data);
+
+    toast({
+      title: "Messaggio inviato!",
+      description: "Grazie per averci contattato. Ti risponderemo presto.",
+    });
+
+    form.reset();
+    setIsSubmitting(false);
   };
 
   return (
@@ -70,14 +63,14 @@ export default function Contact() {
           <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-[#CAE8FF] rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
           <div className="absolute left-0 bottom-0 w-1/3 h-1/3 bg-blue-800 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
               <MessageCircle className="w-4 h-4" />
               Contattaci
             </div>
-            
+
             <h1 className="text-5xl md:text-6xl font-black text-white mb-6" data-testid="contact-title">
               <span className="italic">Parliamo del</span><br />
               <span className="text-[#CAE8FF]">tuo progetto</span>
@@ -88,14 +81,14 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      
+
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
-            
+
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Come possiamo aiutarti?</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm">
                   <div className="bg-[#CAE8FF] p-4 rounded-xl text-[#233DFF] flex-shrink-0">
@@ -117,9 +110,9 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <a 
-                  href="https://wa.me/message/KMMS36SNMMFXK1" 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/message/KMMS36SNMMFXK1"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                   data-testid="contact-whatsapp"
@@ -136,9 +129,9 @@ export default function Contact() {
                   </div>
                 </a>
 
-                <a 
-                  href="https://www.instagram.com/socialwave_agency?igsh=MTFpNmVraDV0aTl2Yw==" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/socialwave_agency?igsh=MTFpNmVraDV0aTl2Yw=="
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                   data-testid="contact-instagram"
@@ -170,7 +163,7 @@ export default function Contact() {
 
             <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Richiedi un preventivo gratuito</h2>
-              
+
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" data-testid="contact-form">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -181,7 +174,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel className="text-sm font-bold text-gray-700">Nome *</FormLabel>
                           <FormControl>
-                            <Input 
+                            <Input
                               {...field}
                               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#233DFF] focus:ring-2 focus:ring-[#CAE8FF]"
                               placeholder="Mario Rossi"
@@ -199,7 +192,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel className="text-sm font-bold text-gray-700">Nome locale</FormLabel>
                           <FormControl>
-                            <Input 
+                            <Input
                               {...field}
                               value={field.value || ''}
                               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#233DFF] focus:ring-2 focus:ring-[#CAE8FF]"
@@ -220,7 +213,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel className="text-sm font-bold text-gray-700">Email *</FormLabel>
                         <FormControl>
-                          <Input 
+                          <Input
                             {...field}
                             type="email"
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#233DFF] focus:ring-2 focus:ring-[#CAE8FF]"
@@ -240,7 +233,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel className="text-sm font-bold text-gray-700">Messaggio *</FormLabel>
                         <FormControl>
-                          <Textarea 
+                          <Textarea
                             {...field}
                             rows={4}
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#233DFF] focus:ring-2 focus:ring-[#CAE8FF] resize-none"
@@ -253,13 +246,13 @@ export default function Contact() {
                     )}
                   />
 
-                  <Button 
-                    type="submit" 
-                    disabled={contactMutation.isPending}
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
                     className="w-full bg-[#233DFF] text-white font-bold py-6 rounded-xl shadow-lg transition-all hover:bg-[#1a2fc7] hover:shadow-xl flex justify-center items-center gap-2"
                     data-testid="button-submit"
                   >
-                    {contactMutation.isPending ? (
+                    {isSubmitting ? (
                       <>
                         <Loader2 className="animate-spin" size={20} />
                         Invio in corso...

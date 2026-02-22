@@ -3,10 +3,10 @@ import { ArrowRight, Camera, Video, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
-import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
-import dsc01147 from "@assets/DSC01147_1766092496651.jpg";
-import scw03896 from "@assets/SCW03896_1766092496651.jpg";
-import foto5 from "@assets/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
+import foto1 from "/images/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
+import dsc01147 from "/images/DSC01147_1766092496651.jpg";
+import scw03896 from "/images/SCW03896_1766092496651.jpg";
+import foto5 from "/images/Foto_esempio_ristorazione_SW5_1766092496653.jpg";
 
 const categories = [
   {

@@ -3,9 +3,9 @@ import { ArrowLeft, ArrowRight, TrendingUp, Users, Heart } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 
-import logoPorciComodi from "@assets/Logo_I_Porci_Comodi_1765228675415.png";
-import logoPanacea from "@assets/Logo_La_Panacea_1765147679036.png";
-import logoEleven from "@assets/Logo_Eleven_nuovo_1765147637806.png";
+import logoPorciComodi from "/images/Logo_I_Porci_Comodi_1765228675415.png";
+import logoPanacea from "/images/Logo_La_Panacea_1765147679036.png";
+import logoEleven from "/images/Logo_Eleven_nuovo_1765147637806.png";
 
 const managedProfiles = [
   { 

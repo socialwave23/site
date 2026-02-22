@@ -1,4 +1,4 @@
-import logoImage from "@assets/Logo_SocialWave_senza_sfondo_1766091719663.png";
+import logoImage from "/images/Logo_SocialWave_senza_sfondo_1766091719663.png";
 
 interface LogoProps {
   className?: string;
