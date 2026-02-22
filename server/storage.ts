@@ -65,7 +65,7 @@ export class MemStorage implements IStorage {
     this.users = new Map();
     this.contactMessages = new Map();
     this.portfolioItems = new Map();
-    
+
     defaultPortfolioItems.forEach(item => {
       this.portfolioItems.set(item.id, item);
     });
@@ -92,6 +92,7 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const message: ContactMessage = {
       ...insertMessage,
+      company: insertMessage.company || null,
       id,
       createdAt: new Date(),
     };

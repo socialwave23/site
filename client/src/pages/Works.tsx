@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { ArrowRight, Camera, Video, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 import foto1 from "@assets/Foto_esempio_ristorazione_SW1_1766092218579.jpg";
 import dsc01147 from "@assets/DSC01147_1766092496651.jpg";
@@ -56,89 +57,117 @@ export default function Works() {
           <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-[#CAE8FF] rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#233DFF]/50 rounded-full blur-[100px] animate-float"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <p className="text-[#CAE8FF] font-semibold text-sm uppercase tracking-wider mb-4 animate-fade-in">I nostri lavori</p>
-            
-            <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 italic animate-slide-up"
+            <motion.p
+              className="text-[#CAE8FF] font-semibold text-sm uppercase tracking-wider mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              I nostri lavori
+            </motion.p>
+
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 italic"
               data-testid="works-page-title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               Cosa<br />
               <span className="text-[#CAE8FF]">creiamo</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-xl text-white/70 max-w-2xl mx-auto animate-fade-in">
+            <motion.p
+              className="text-xl text-white/70 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Foto professionali, video virali e profili social gestiti con passione per le aziende di Pisa e provincia.
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <motion.div
+            className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.15 } },
+              hidden: {}
+            }}
+          >
             {categories.map((category, idx) => (
-              <Link 
-                key={category.id} 
-                href={category.path} 
-                onClick={handleScrollTop}
-                className="group"
+              <motion.div
+                key={category.id}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <div 
-                  className="relative h-[500px] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl animate-fade-in"
-                  style={{ 
-                    animationDelay: `${idx * 150}ms`,
-                    animationFillMode: 'backwards'
-                  }}
-                  data-testid={`category-card-${category.id}`}
+                <Link
+                  href={category.path}
+                  onClick={handleScrollTop}
+                  className="group block"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-b ${category.gradient}`}></div>
-                  
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute right-0 top-0 w-48 h-48 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow"></div>
-                    <div className="absolute left-0 bottom-1/3 w-32 h-32 bg-[#233DFF] rounded-full blur-2xl animate-float"></div>
-                  </div>
+                  <div
+                    className="relative h-[500px] rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl"
+                    data-testid={`category-card-${category.id}`}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-b ${category.gradient}`}></div>
 
-                  <div className="absolute top-6 left-6 right-6 grid grid-cols-2 gap-2 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
-                    {category.images.map((img, imgIdx) => (
-                      <div 
-                        key={imgIdx} 
-                        className="aspect-square rounded-xl overflow-hidden transition-transform duration-700"
-                        style={{ 
-                          transform: `rotate(${imgIdx % 2 === 0 ? -3 : 3}deg)`,
-                          transitionDelay: `${imgIdx * 50}ms`
-                        }}
-                      >
-                        <img 
-                          src={img} 
-                          alt="" 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute right-0 top-0 w-48 h-48 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow"></div>
+                      <div className="absolute left-0 bottom-1/3 w-32 h-32 bg-[#233DFF] rounded-full blur-2xl animate-float"></div>
+                    </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#050A30] via-[#050A30]/90 to-transparent">
-                    <span className="text-5xl mb-4 block transform group-hover:scale-110 transition-transform duration-300">{category.emoji}</span>
-                    <h2 className="text-3xl font-black text-white mb-2 group-hover:text-[#CAE8FF] transition-colors duration-300">
-                      {category.title}
-                    </h2>
-                    <p className="text-white/70 mb-4 text-sm">
-                      {category.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#CAE8FF] font-bold text-sm">{category.stats}</span>
-                      <div className="w-10 h-10 rounded-full bg-[#233DFF] flex items-center justify-center group-hover:bg-[#CAE8FF] transition-all duration-300 group-hover:scale-110">
-                        <ArrowRight className="w-5 h-5 text-white group-hover:text-[#050A30] transition-colors duration-300" />
+                    <div className="absolute top-6 left-6 right-6 grid grid-cols-2 gap-2 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                      {category.images.map((img, imgIdx) => (
+                        <div
+                          key={imgIdx}
+                          className="aspect-square rounded-xl overflow-hidden transition-transform duration-700"
+                          style={{
+                            transform: `rotate(${imgIdx % 2 === 0 ? -3 : 3}deg)`,
+                            transitionDelay: `${imgIdx * 50}ms`
+                          }}
+                        >
+                          <img
+                            src={img}
+                            alt=""
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#050A30] via-[#050A30]/90 to-transparent">
+                      <span className="text-5xl mb-4 block transform group-hover:scale-110 transition-transform duration-300">{category.emoji}</span>
+                      <h2 className="text-3xl font-black text-white mb-2 group-hover:text-[#CAE8FF] transition-colors duration-300">
+                        {category.title}
+                      </h2>
+                      <p className="text-white/70 mb-4 text-sm">
+                        {category.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#CAE8FF] font-bold text-sm">{category.stats}</span>
+                        <div className="w-10 h-10 rounded-full bg-[#233DFF] flex items-center justify-center group-hover:bg-[#CAE8FF] transition-all duration-300 group-hover:scale-110">
+                          <ArrowRight className="w-5 h-5 text-white group-hover:text-[#050A30] transition-colors duration-300" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -147,7 +176,7 @@ export default function Works() {
           <div className="absolute right-0 top-0 w-96 h-96 bg-[#233DFF] rounded-full blur-3xl animate-pulse-slow"></div>
           <div className="absolute left-0 bottom-0 w-96 h-96 bg-[#CAE8FF] rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
